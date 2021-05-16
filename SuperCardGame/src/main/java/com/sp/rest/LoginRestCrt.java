@@ -71,7 +71,7 @@ import com.sp.service.UserService;
       
       @RequestMapping("/getCurrentUserId")
       public String readCookie(@CookieValue(value = "id", defaultValue = "0") String id) {
-    	  return uService.readCookie(id);
+    	  return "The id of the current user is "+uService.readCookie(id);
     	  
       }
       

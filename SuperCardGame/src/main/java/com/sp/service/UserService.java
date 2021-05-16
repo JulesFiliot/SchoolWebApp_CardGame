@@ -50,6 +50,6 @@ public class UserService {
 	}*/
     
      public String readCookie(@CookieValue(value = "id", defaultValue = "0") String id) {
-   	    return "Hey! My id is " + id;
+   	    return id;
      }
 }
