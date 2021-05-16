@@ -13,6 +13,7 @@ public class Card {
 	private String superPowerName;
 	private int superPowerValue;
 	private String imgUrl;
+	private int ownerId = 0;
 	
 	public Card() {
 	}
@@ -33,6 +34,14 @@ public class Card {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public int getOwnerId() {
+		return this.ownerId;
+	}
+	
+	public void setOwner(int ownerId) {
+		this.ownerId = ownerId;
 	}
 
 	public String getSuperPowerName() {
