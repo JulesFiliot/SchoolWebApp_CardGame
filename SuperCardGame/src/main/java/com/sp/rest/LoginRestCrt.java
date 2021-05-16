@@ -1,10 +1,16 @@
  package com.sp.rest;
 
-  import javax.servlet.http.Cookie;
+  import java.util.Arrays;
+import java.util.Optional;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.text.html.Option;
 
 import org.springframework.beans.factory.annotation.Autowired;
-  import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.PathVariable;
   import org.springframework.web.bind.annotation.RequestBody;
   import org.springframework.web.bind.annotation.RequestMapping;
   import org.springframework.web.bind.annotation.RequestMethod;
@@ -49,6 +55,24 @@ import com.sp.service.UserService;
 		  Cookie cookie = new Cookie("id", "0");
 		  response.addCookie(cookie);
 		  return;
+      }
+
+      /*@RequestMapping("/consolecookie")
+      public void consolecookie(HttpServletRequest req) {
+    	  Optional<String> out=uService.readCookie(req, "id");
+    	  System.out.println(out);
+    	  return;
+      }*/
+      
+     // @RequestMapping("/readCookie")
+     // public String readCookie(@CookieValue(value = "id", defaultValue = "0") String id) {
+    //	    return "Hey! My id is " + id;
+    //	}
+      
+      @RequestMapping("/getCurrentUserId")
+      public String readCookie(@CookieValue(value = "id", defaultValue = "0") String id) {
+    	  return uService.readCookie(id);
+    	  
       }
       
      /* 

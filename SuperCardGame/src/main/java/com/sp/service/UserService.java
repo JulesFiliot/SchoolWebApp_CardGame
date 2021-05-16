@@ -1,7 +1,10 @@
 package com.sp.service;
 
+import java.util.Arrays;
 import java.util.Optional;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,9 +42,14 @@ public class UserService {
 		return uid;
 		}
 
-	public String getUserCookieId(@CookieValue(value = "id", defaultValue = "0") String userId) {
-		return userId;
-		
-	}
-	
+   /* public Optional<String> readCookie(HttpServletRequest request,String key) {
+	    return Arrays.stream(request.getCookies())
+	      .filter(c -> key.equals(c.getName()))
+	      .map(Cookie::getValue)
+	      .findAny();
+	}*/
+    
+     public String readCookie(@CookieValue(value = "id", defaultValue = "0") String id) {
+   	    return "Hey! My id is " + id;
+     }
 }
