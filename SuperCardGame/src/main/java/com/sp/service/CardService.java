@@ -26,4 +26,9 @@ public class CardService {
 		}
 	}
 
+
+	public void cardSold(String id, String cid) {
+		getCard(Integer.parseInt(cid));
+	}
+
 }

@@ -64,4 +64,9 @@ public class UserService {
      public String readCookie(@CookieValue(value = "id", defaultValue = "0") String id) {
    	    return id;
      }
+     
+     public void signIn(String username, String password) {
+    	 User u= new User(username,password);
+    	 addUser(u); 	 
+     }
 }
