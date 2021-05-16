@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sp.model.User;
 import com.sp.service.UserService;
 
   @RestController
@@ -57,6 +58,19 @@ import com.sp.service.UserService;
 		  return;
       }
 
+      @RequestMapping(value="/signin")
+      public ModelAndView signin(@RequestParam(name="username", required=false, defaultValue="") String username,@RequestParam(name="password", required=false, defaultValue="") String password) {
+          if (!username.equals("") && !password.equals("")) {
+              User u= new User(username,password);
+        	  uService.addUser(u);
+    		  ModelAndView modelAndView = new ModelAndView();
+    		  modelAndView.setViewName("index");
+    		  return modelAndView;
+          }
+		  ModelAndView modelAndView = new ModelAndView();
+		  modelAndView.setViewName("signin");
+		  return modelAndView;
+      }
       /*@RequestMapping("/consolecookie")
       public void consolecookie(HttpServletRequest req) {
     	  Optional<String> out=uService.readCookie(req, "id");
