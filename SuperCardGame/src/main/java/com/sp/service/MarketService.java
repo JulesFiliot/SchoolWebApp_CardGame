@@ -18,10 +18,16 @@ public class MarketService {
 
 	public void buyCard(String id, String cid) {
 		System.out.println("lesgo");
-		uService.namegetUser(id);
-		cService.cardSold(id,cid);
+		uService.cardBought(id);
+		cService.cardBought(id,cid);
 	}
 
+	public void sellCard(String id, String cid) {
+		System.out.println("lesgo");
+		uService.cardSold(id);
+		cService.cardSold(cid);
+	}
+	
 	public void testU(String str) {
 		System.out.println(uService.namegetUser(str));
 		

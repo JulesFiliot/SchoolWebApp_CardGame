@@ -69,4 +69,14 @@ public class UserService {
     	 User u= new User(username,password);
     	 addUser(u); 	 
      }
+     
+     public void cardBought(String id) {
+    	 getUser(Integer.parseInt(id)).setMoney(getUser(Integer.parseInt(id)).getMoney()-50);
+    	 
+     }
+
+	public void cardSold(String id) {
+   	 getUser(Integer.parseInt(id)).setMoney(getUser(Integer.parseInt(id)).getMoney()+50);
+		
+	}
 }
