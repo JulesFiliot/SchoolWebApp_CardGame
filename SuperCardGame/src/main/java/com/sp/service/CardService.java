@@ -39,6 +39,12 @@ public class CardService {
 		return name;
 	}
 
+
+
+	public void cardSold(String id, String cid) {
+		getCard(Integer.parseInt(cid));
+	}
+	
 	public ArrayList<Card> getMyCards(String id) {
 		ArrayList<Card> ListCard = new ArrayList<Card>();
 		int i=Integer.parseInt(id);
