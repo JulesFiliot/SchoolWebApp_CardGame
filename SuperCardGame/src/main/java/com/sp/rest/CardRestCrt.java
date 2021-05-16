@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sp.model.Card;
+import com.sp.model.User;
 import com.sp.service.CardService;
 
 
@@ -54,5 +55,36 @@ public class CardRestCrt {
     public ArrayList<Card> getMyCards(@CookieValue(value = "id", defaultValue = "0") String id) {
     	ArrayList<Card> cards = cService.getMyCards(id);
     	return cards;
+    }
+    
+    @RequestMapping(method=RequestMethod.GET,value="/allcards")
+    public ArrayList<Card> getAllCards() {
+    	ArrayList<Card> cards = cService.getAllCards();
+    	return cards;
+    }
+    
+    @RequestMapping(value="/createAllCards")
+    public void createAllCards() {
+  	  
+        Card c= new Card(1,"San Goku","KAMEHAMEHA!",80,null,0);
+        cService.addCard(c);
+        c = new Card(2,"Saitama","Série de coups sérieux",200,null,0);
+        cService.addCard(c);
+        c = new Card(3,"Ener","El Thor",110,null,0);
+        cService.addCard(c);
+        c = new Card(4,"Midorya","Texas Smash",90,null,0);
+        cService.addCard(c);
+        c = new Card(5,"Hero","Gigantaille",60,null,0);
+        cService.addCard(c);
+        c = new Card(6,"Magicarpe","Trempette",0,null,0);
+        cService.addCard(c);
+        c = new Card(7,"Griffith","Eclipse",400,null,0);
+        cService.addCard(c);
+        c = new Card(8,"Mirajane","Forme Démoniaque",80,null,0);
+        cService.addCard(c);
+        c = new Card(9,"Kagura","Neo Armstrong Cyclone Jet",250,null,0);
+        cService.addCard(c);
+
+        return;
     }
 }

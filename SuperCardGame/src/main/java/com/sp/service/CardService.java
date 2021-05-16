@@ -52,4 +52,15 @@ public class CardService {
 		}
 		return ListCard;
 	}
+	
+	public ArrayList<Card> getAllCards() {
+		ArrayList<Card> ListCard = new ArrayList<Card>();
+		Iterable<Card> allCards =cRepository.findAll();
+		Iterator<Card> iterator = allCards.iterator();
+		while(iterator.hasNext()) {
+		    Card it = iterator.next();
+		    ListCard.add(it);
+		}
+		return ListCard;
+	}
 }

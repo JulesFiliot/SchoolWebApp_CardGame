@@ -1,6 +1,8 @@
 package com.sp.service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CookieValue;
 
+import com.sp.model.Card;
 import com.sp.model.User;
 import com.sp.repository.UserRepository;
 
@@ -64,4 +67,15 @@ public class UserService {
      public String readCookie(@CookieValue(value = "id", defaultValue = "0") String id) {
    	    return id;
      }
+     
+ 	public ArrayList<User> getAllUsers() {
+		ArrayList<User> ListUser = new ArrayList<User>();
+		Iterable<User> allUsers =uRepository.findAll();
+		Iterator<User> iterator = allUsers.iterator();
+		while(iterator.hasNext()) {
+		    User it = iterator.next();
+		    ListUser.add(it);
+		}
+		return ListUser;
+	}
 }

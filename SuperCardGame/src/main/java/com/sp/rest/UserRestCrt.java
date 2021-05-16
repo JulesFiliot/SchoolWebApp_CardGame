@@ -1,6 +1,7 @@
  package com.sp.rest;
 
-  import java.util.Arrays;
+  import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,7 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
   import org.springframework.web.bind.annotation.RequestMethod;
   import org.springframework.web.bind.annotation.RestController;
 
-  import com.sp.model.User;
+import com.sp.model.Card;
+import com.sp.model.User;
   import com.sp.service.UserService;
 
   @RestController
@@ -47,8 +49,13 @@ import org.springframework.beans.factory.annotation.Autowired;
       @RequestMapping(method=RequestMethod.GET,value="/username/{name}")
       public String namegetUser(@PathVariable String name) {
     	  String uname=uService.namegetUser(name);
-    	  return uname;
-    	  
+    	  return uname;  
       }
 
+      @RequestMapping(method=RequestMethod.GET,value="/allusers")
+      public ArrayList<User> getAllUsers() {
+      	ArrayList<User> users = uService.getAllUsers();
+      	return users;
+      }
+      
   }
