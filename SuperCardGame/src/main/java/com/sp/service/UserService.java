@@ -25,5 +25,15 @@ public class UserService {
 			return null;
 		}
 	}
+	
+	public int checkUser(String username, String pwd) {
+		int uid = 0;
+		//username="Paul";
+		//pwd="paul";
+		System.out.println("Username et pwd dans checkUser:"+username+"&"+pwd);
+		if (username.equals("Paul") && pwd.equals("paul")) {uid = 1;}
+		System.out.println(uid);
+		return uid;
+		}
 
 }
