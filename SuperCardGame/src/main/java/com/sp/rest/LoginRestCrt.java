@@ -14,12 +14,12 @@
       @Autowired
       UserService uService;
       
-    /*  @RequestMapping(value="/login")
+      /*@RequestMapping(value="/login")
       public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
     	  model.addAttribute("name", name);
     	  return "greeting";
-      
-  /*    @RequestMapping(method=RequestMethod.POST,value="/hero")
+     }
+      @RequestMapping(method=RequestMethod.POST,value="/hero")
       public void addHero(@RequestBody Hero hero) {
           hService.addHero(hero);
       }
@@ -30,4 +30,4 @@
           return h;
       }
 */
-  }
+}
