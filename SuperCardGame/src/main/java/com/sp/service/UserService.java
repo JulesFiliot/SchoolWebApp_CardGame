@@ -39,7 +39,7 @@ public class UserService {
 		return uid;
 		}
 
-	public String getUserCookieId(@CookieValue(value = "username", defaultValue = "Atta") String userId) {
+	public String getUserCookieId(@CookieValue(value = "id", defaultValue = "0") String userId) {
 		return userId;
 		
 	}
