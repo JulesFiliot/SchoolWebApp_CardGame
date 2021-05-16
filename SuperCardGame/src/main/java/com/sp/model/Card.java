@@ -18,13 +18,14 @@ public class Card {
 	public Card() {
 	}
 
-	public Card(int id,String name, String superPowerName, int superPowerValue, String imgUrl) {
+	public Card(int id,String name, String superPowerName, int superPowerValue, String imgUrl, int ownerId) {
 		super();
 		this.id=id;
 		this.name = name;
 		this.superPowerName = superPowerName;
 		this.superPowerValue = superPowerValue;
 		this.imgUrl = imgUrl;
+		this.ownerId = ownerId;
 	}
 
 
@@ -40,7 +41,7 @@ public class Card {
 		return this.ownerId;
 	}
 	
-	public void setOwner(int ownerId) {
+	public void setOwnerId(int ownerId) {
 		this.ownerId = ownerId;
 	}
 

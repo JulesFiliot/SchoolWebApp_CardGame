@@ -83,26 +83,8 @@ import com.sp.service.UserService;
       
       @RequestMapping("/getCurrentUserId")
       public String readCookie(@CookieValue(value = "id", defaultValue = "0") String id) {
-    	  return "The id of the current user is " + uService.readCookie(id);
-      }
-      
-     /* 
-      @RequestMapping(method=RequestMethod.POST,value="/login")
-      public void login(@RequestBody )
-    /*  @RequestMapping(value="/login")
-      public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-    	  model.addAttribute("name", name);
-    	  return "greeting";
-      
-  /*    @RequestMapping(method=RequestMethod.POST,value="/hero")
-      public void addHero(@RequestBody Hero hero) {
-          hService.addHero(hero);
-      }
-      
-      @RequestMapping(method=RequestMethod.GET,value="/hero/{id}")
-      public Hero getHero(@PathVariable String id) {
-          Hero h=hService.getHero(Integer.valueOf(id));
-          return h;
-      }
-*/
-  }
+    	  return "The id of the current user is "+uService.readCookie(id);
+      }      
+}
+
+
