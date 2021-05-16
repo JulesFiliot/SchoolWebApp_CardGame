@@ -37,11 +37,12 @@ public class UserService {
            Card c = iterator.next();
            if (c.getOwnerId() == 0) {
         	   System.out.println(c.getOwnerId());
-        	   c.setOwnerId(u.getId());
+        	   c.setOwnerId(createdUser.getId());
         	   System.out.println(c.getOwnerId());
         	   cpt++;
         	   System.out.println(c);
-           }}
+           }
+        }
 	}
 	
 	public User getUser(int id) {
