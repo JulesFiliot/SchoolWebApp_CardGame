@@ -1,6 +1,7 @@
 package com.sp.service;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,16 +13,34 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CookieValue;
 
+import com.sp.model.Card;
 import com.sp.model.User;
+import com.sp.repository.CardRepository;
+import com.sp.service.CardService;
 import com.sp.repository.UserRepository;
 
 @Service
 public class UserService {
 	@Autowired
 	UserRepository uRepository;
+	@Autowired
+	CardRepository cRepository;
 	public void addUser(User u) {
 		User createdUser=uRepository.save(u);
 		System.out.println(createdUser);
+		
+		Iterable<Card> allCards = cRepository.findAll();
+        Iterator<Card> iterator = allCards.iterator();
+        int cpt = 0;
+        while(iterator.hasNext() && cpt < 5) {
+           Card c = iterator.next();
+           if (c.getOwnerId() == 0) {
+        	   System.out.println(c.getOwnerId());
+        	   c.setOwnerId(u.getId());
+        	   System.out.println(c.getOwnerId());
+        	   cpt++;
+        	   System.out.println(c);
+           }}
 	}
 	
 	public User getUser(int id) {
