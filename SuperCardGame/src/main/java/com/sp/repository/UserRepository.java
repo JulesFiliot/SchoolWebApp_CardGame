@@ -6,5 +6,5 @@ import com.sp.model.User;
 
 public interface UserRepository extends CrudRepository<User, Integer> {
 
-	public List<User> findByName(String name);
+	public User findByName(String name);
 }

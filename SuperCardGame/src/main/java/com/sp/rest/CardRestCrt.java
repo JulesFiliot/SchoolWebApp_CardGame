@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.sp.model.Card;
 import com.sp.service.CardService;
@@ -25,5 +26,17 @@ public class CardRestCrt {
     public Card getCard(@PathVariable String id) {
         Card c=cService.getCard(Integer.valueOf(id));
         return c;
+    }
+    
+    //Affichage de liste des cartes
+    @RequestMapping("/cardList")
+    public ModelAndView page () {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("cardList");
+        
+        Card c=cService.getCard(1);
+        String name = c.getName();
+        modelAndView.addObject("cardName", name);
+        return modelAndView;
     }
 }

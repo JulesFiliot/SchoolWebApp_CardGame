@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
         <!-- Standard Meta -->
         <meta charset="utf-8" />
@@ -48,8 +48,7 @@
                                                 </div>
                                             </div>
                                             <div class="ui fluid image">
-                                                <a class="ui left corner label">
-                                                    DEADPOOL
+                                                <a class="ui left corner label" th:text="{cardName}">
                                                   </a>
                                                 <img id="cardImgId" class="ui centered image" src="https://static.hitek.fr/img/actualite/2017/06/27/i_deadpool-2.jpg">
                                             </div>
