@@ -1,6 +1,7 @@
 package com.sp.service;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.Cookie;
@@ -32,10 +33,14 @@ public class UserService {
 		}
 	}
 	
+	public List<User> namegetUser(String name) {
+		List<User> uOpt =uRepository.findByName(name);
+		return uOpt;
+	}
+	
 	public int checkUser(String username, String pwd) {
 		int uid = 0;
-		//username="Paul";
-		//pwd="paul";
+		
 		System.out.println("Username et pwd dans checkUser:"+username+"&"+pwd);
 		if (username.equals("Paul") && pwd.equals("paul")) {uid = 1;}
 		System.out.println(uid);

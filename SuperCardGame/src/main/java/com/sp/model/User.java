@@ -10,15 +10,17 @@ public class User {
 	@GeneratedValue
 	private Integer id;
 	private String name;
+	private String password;
 	private int money;
 	
 	public User() {
 	}
 
-	public User(int id, String name, int money) {
+	public User(int id, String name, String password, int money) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.password=password;
 		this.money = money;
 	}
 
@@ -31,6 +33,9 @@ public class User {
 		this.name = name;
 	}
 
+	public String getPassword() {
+		return password;
+	}
 	
 	public int getId() {
 		return id;
