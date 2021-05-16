@@ -6,14 +6,22 @@
   import org.springframework.web.bind.annotation.RequestMapping;
   import org.springframework.web.bind.annotation.RequestMethod;
   import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
-  import com.sp.service.UserService;
+import com.sp.service.UserService;
 
   @RestController
   public class LoginRestCrt {
       @Autowired
       UserService uService;
       
+      
+      @RequestMapping("/login")
+      public ModelAndView page () {
+          ModelAndView modelAndView = new ModelAndView();
+          modelAndView.setViewName("login");
+          return modelAndView;
+      }
     /*  @RequestMapping(value="/login")
       public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
     	  model.addAttribute("name", name);
