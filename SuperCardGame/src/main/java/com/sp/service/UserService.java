@@ -2,8 +2,11 @@ package com.sp.service;
 
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CookieValue;
 
 import com.sp.model.User;
 import com.sp.repository.UserRepository;
@@ -12,7 +15,7 @@ import com.sp.repository.UserRepository;
 public class UserService {
 	@Autowired
 	UserRepository uRepository;
-	public void addHero(User u) {
+	public void addUser(User u) {
 		User createdUser=uRepository.save(u);
 		System.out.println(createdUser);
 	}
@@ -36,4 +39,9 @@ public class UserService {
 		return uid;
 		}
 
+	public String getUserCookieId(@CookieValue(value = "username", defaultValue = "Atta") String userId) {
+		return userId;
+		
+	}
+	
 }
