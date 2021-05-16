@@ -2,6 +2,7 @@
 package com.sp.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,13 +31,18 @@ public class CardRestCrt {
     
     //Affichage de liste des cartes
     @RequestMapping("/cardList")
-    public ModelAndView page () {
+    public ModelAndView page (@CookieValue(value = "id", defaultValue = "0") String id) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("cardList");
         
-        Card c=cService.getCard(1);
-        String name = c.getName();
-        modelAndView.addObject("cardName", name);
+        String userName = cService.getUserName(id);
+        modelAndView.addObject("userName", userName);
+        System.out.println(userName);
+        
+        //Card c=cService.getCard(1);
+        //String name = c.getName();
+        //modelAndView.addObject("cardName", name);
+        
         return modelAndView;
     }
 }

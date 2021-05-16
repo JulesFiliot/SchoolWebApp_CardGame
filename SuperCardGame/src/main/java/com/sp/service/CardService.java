@@ -4,14 +4,17 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CookieValue;
 
 import com.sp.model.Card;
 import com.sp.repository.CardRepository;
 
 @Service
-public class CardService {
+public class CardService {	
 	@Autowired
 	CardRepository cRepository;
+	UserService uService;
+	
 	public void addCard(Card c) {
 		Card createdCard=cRepository.save(c);
 		System.out.println(createdCard);
@@ -25,5 +28,11 @@ public class CardService {
 			return null;
 		}
 	}
-
+	
+	//Retourne le nom de l'utilisateur connecté grâce à l'id du cookie
+	public String getUserName(@CookieValue(value = "id", defaultValue = "0") String id) {
+		String name;
+		name = uService.getUser(Integer.parseInt(id)).getName();
+		return name;
+	}
 }
