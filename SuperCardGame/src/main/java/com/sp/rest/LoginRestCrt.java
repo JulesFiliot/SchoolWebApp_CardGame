@@ -27,7 +27,7 @@ import com.sp.service.UserService;
       
       
       @RequestMapping("/login")
-      public ModelAndView page (@RequestParam(name="username", required=false, defaultValue="Jack") String username,@RequestParam(name="password", required=false, defaultValue="") String password,HttpServletResponse response) {
+      public ModelAndView page (@RequestParam(name="username", required=false, defaultValue="") String username,@RequestParam(name="password", required=false, defaultValue="") String password,HttpServletResponse response) {
   		  System.out.println(username);
   		  System.out.println(password);
     	  int id = uService.checkUser(username, password);
@@ -71,8 +71,7 @@ import com.sp.service.UserService;
       
       @RequestMapping("/getCurrentUserId")
       public String readCookie(@CookieValue(value = "id", defaultValue = "0") String id) {
-    	  return "The id of the current user is "+uService.readCookie(id);
-    	  
+    	  return "The id of the current user is " + uService.readCookie(id);
       }
       
      /* 

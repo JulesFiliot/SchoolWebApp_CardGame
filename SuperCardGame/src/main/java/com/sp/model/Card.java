@@ -13,19 +13,19 @@ public class Card {
 	private String superPowerName;
 	private int superPowerValue;
 	private String imgUrl;
-	private int idPos;
+	private int ownerId = 0;
 	
 	public Card() {
 	}
 
-	public Card(int id,String name, String superPowerName, int superPowerValue, String imgUrl, int idPos) {
+	public Card(int id,String name, String superPowerName, int superPowerValue, String imgUrl, int ownerId) {
 		super();
 		this.id=id;
 		this.name = name;
 		this.superPowerName = superPowerName;
 		this.superPowerValue = superPowerValue;
 		this.imgUrl = imgUrl;
-		this.idPos = idPos;
+		this.ownerId = ownerId;
 	}
 
 
@@ -35,6 +35,14 @@ public class Card {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public int getOwnerId() {
+		return this.ownerId;
+	}
+	
+	public void setOwnerId(int ownerId) {
+		this.ownerId = ownerId;
 	}
 
 	public String getSuperPowerName() {
@@ -67,14 +75,6 @@ public class Card {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-	
-	public int getIdPos() {
-		return idPos;
-	}
-	
-	public void setIdpos(int idPos) {
-		this.idPos = idPos;
 	}
 
 	@Override
