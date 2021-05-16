@@ -33,16 +33,23 @@ public class UserService {
 		}
 	}
 	
-	public List<User> namegetUser(String name) {
-		List<User> uOpt =uRepository.findByName(name);
-		return uOpt;
-	}
+	public String namegetUser(String name) {
+	//	List<User> uData =uRepository.findByName(name);
+		if (uRepository.findByName(name)!=null) {
+			return uRepository.findByName(name).getName();
+			}
+		return null;
+		}
 	
 	public int checkUser(String username, String pwd) {
 		int uid = 0;
-		
-		System.out.println("Username et pwd dans checkUser:"+username+"&"+pwd);
-		if (username.equals("Paul") && pwd.equals("paul")) {uid = 1;}
+		if (namegetUser(username)!=null) {
+			if (pwd.equals(uRepository.findByName(username).getPassword())) {
+				uid=uRepository.findByName(username).getId();
+			}	
+		}
+		//System.out.println("Username et pwd dans checkUser:"+username+"&"+pwd);
+		//if (username.equals("Paul") && pwd.equals("paul")) {uid = 1;}
 		System.out.println(uid);
 		return uid;
 		}

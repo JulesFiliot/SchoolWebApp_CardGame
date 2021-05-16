@@ -36,18 +36,18 @@ import org.springframework.beans.factory.annotation.Autowired;
       @RequestMapping(value="/createAllUsers")
       public void createAllUsers() {
     	  
-          User u= new User(2,"Rex","dino",222);
+          User u= new User(1,"Rex","dino",111);
           uService.addUser(u);
-          u = new User(3,"Jack","gun",333);
+          u = new User(2,"Jack","gun",222);
           uService.addUser(u);
 
           return;
       }
       
       @RequestMapping(method=RequestMethod.GET,value="/username/{name}")
-      public List<User> namegetUser(@PathVariable String name) {
-    	  List<User> u=uService.namegetUser(name);
-    	  return u;
+      public String namegetUser(@PathVariable String name) {
+    	  String uname=uService.namegetUser(name);
+    	  return uname;
     	  
       }
 
