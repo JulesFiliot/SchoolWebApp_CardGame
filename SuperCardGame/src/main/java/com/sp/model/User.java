@@ -10,20 +10,16 @@ public class User {
 	@GeneratedValue
 	private Integer id;
 	private String name;
-	private String superPowerName;
-	private int superPowerValue;
-	private String imgUrl;
+	private int money;
 	
 	public User() {
 	}
 
-	public User(int id,String name, String superPowerName, int superPowerValue, String imgUrl) {
+	public User(int id, String name, int money) {
 		super();
-		this.id=id;
+		this.id = id;
 		this.name = name;
-		this.superPowerName = superPowerName;
-		this.superPowerValue = superPowerValue;
-		this.imgUrl = imgUrl;
+		this.money = money;
 	}
 
 
@@ -35,29 +31,6 @@ public class User {
 		this.name = name;
 	}
 
-	public String getSuperPowerName() {
-		return superPowerName;
-	}
-
-	public void setSuperPowerName(String superPowerName) {
-		this.superPowerName = superPowerName;
-	}
-
-	public int getSuperPowerValue() {
-		return superPowerValue;
-	}
-
-	public void setSuperPowerValue(int superPowerValue) {
-		this.superPowerValue = superPowerValue;
-	}
-
-	public String getImgUrl() {
-		return imgUrl;
-	}
-
-	public void setImgUrl(String imgUrl) {
-		this.imgUrl = imgUrl;
-	}
 	
 	public int getId() {
 		return id;
@@ -66,9 +39,17 @@ public class User {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	public int getMoney() {
+		return this.money;
+	}
+	
+	public void setMoney(int money) {
+		this.money = money;
+	}
 
 	@Override
 	public String toString() {
-		return "Card ["+this.id+"]: name:"+this.name+", superPowerName:"+this.superPowerName+", superPowerValue:"+this.superPowerValue+" imgUrl:"+this.imgUrl;
+		return "USER [" + this.id + "]: name:" + this.name + ", Bank account : " + this.money;
 	}
 }
