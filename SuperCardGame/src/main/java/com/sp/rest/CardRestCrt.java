@@ -32,7 +32,7 @@ public class CardRestCrt {
         return c;
     }
     
-    @RequestMapping(method=RequestMethod.GET,value="/mycard")
+    @RequestMapping(method=RequestMethod.GET,value="/mycards")
     public ArrayList<Card> getMyCards(@CookieValue(value = "id", defaultValue = "0") String id) {
     	ArrayList<Card> cards = cService.getMyCards(id);
     	return cards;

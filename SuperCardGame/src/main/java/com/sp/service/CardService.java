@@ -37,7 +37,7 @@ public class CardService {
 		Iterator<Card> iterator = allCards.iterator();
 		while(iterator.hasNext()) {
 		    Card it = iterator.next();
-		    if (it.getIdPos() == i) {
+		    if (it.getOwnerId() == i) {
 		    	ListCard.add(it);
 		    }
 		}
