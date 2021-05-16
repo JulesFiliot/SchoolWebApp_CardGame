@@ -16,15 +16,32 @@ import org.springframework.web.bind.annotation.CookieValue;
 
 import com.sp.model.Card;
 import com.sp.model.User;
+import com.sp.repository.CardRepository;
+import com.sp.service.CardService;
 import com.sp.repository.UserRepository;
 
 @Service
 public class UserService {
 	@Autowired
 	UserRepository uRepository;
+	@Autowired
+	CardRepository cRepository;
 	public void addUser(User u) {
 		User createdUser=uRepository.save(u);
 		System.out.println(createdUser);
+		
+		Iterable<Card> allCards = cRepository.findAll();
+        Iterator<Card> iterator = allCards.iterator();
+        int cpt = 0;
+        while(iterator.hasNext() && cpt < 5) {
+           Card c = iterator.next();
+           if (c.getOwnerId() == 0) {
+        	   System.out.println(c.getOwnerId());
+        	   c.setOwnerId(u.getId());
+        	   System.out.println(c.getOwnerId());
+        	   cpt++;
+        	   System.out.println(c);
+           }}
 	}
 	
 	public User getUser(int id) {
@@ -68,6 +85,7 @@ public class UserService {
    	    return id;
      }
      
+
  	public ArrayList<User> getAllUsers() {
 		ArrayList<User> ListUser = new ArrayList<User>();
 		Iterable<User> allUsers =uRepository.findAll();
@@ -77,5 +95,19 @@ public class UserService {
 		    ListUser.add(it);
 		}
 		return ListUser;
+ 	}
+
+     public void signIn(String username, String password) {
+    	 User u= new User(username,password);
+    	 addUser(u); 	 
+     }
+     
+     public void cardBought(String id) {
+    	 getUser(Integer.parseInt(id)).setMoney(getUser(Integer.parseInt(id)).getMoney()-50);
+    	 
+     }
+
+	public void cardSold(String id) {
+   	 getUser(Integer.parseInt(id)).setMoney(getUser(Integer.parseInt(id)).getMoney()+50);
 	}
 }

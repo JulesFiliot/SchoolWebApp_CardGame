@@ -39,6 +39,12 @@ public class CardService {
 		return name;
 	}
 
+
+
+	public void cardBought(String id, String cid) {
+		getCard(Integer.parseInt(cid)).setOwnerId(Integer.parseInt(cid));
+	}
+	
 	public ArrayList<Card> getMyCards(String id) {
 		ArrayList<Card> ListCard = new ArrayList<Card>();
 		int i=Integer.parseInt(id);
@@ -62,5 +68,9 @@ public class CardService {
 		    ListCard.add(it);
 		}
 		return ListCard;
+	}
+
+	public void cardSold(String cid) {
+		getCard(Integer.parseInt(cid)).setOwnerId(0);		
 	}
 }
