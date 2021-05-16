@@ -16,6 +16,14 @@ public class User {
 	public User() {
 	}
 
+	public User(String name, String password) {
+		super();
+		this.name=name;
+		this.password=password;
+		this.money=500;
+		
+	}
+	
 	public User(int id, String name, String password, int money) {
 		super();
 		this.id = id;
@@ -37,11 +45,11 @@ public class User {
 		return password;
 	}
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	

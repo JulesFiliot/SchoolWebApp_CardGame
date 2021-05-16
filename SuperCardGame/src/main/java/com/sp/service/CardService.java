@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.CookieValue;
 import com.sp.model.Card;
 import com.sp.repository.CardRepository;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 @Service
 public class CardService {	
 	@Autowired
@@ -34,5 +37,19 @@ public class CardService {
 		String name;
 		name = uService.getUser(Integer.parseInt(id)).getName();
 		return name;
+	}
+
+	public ArrayList<Card> getMyCards(String id) {
+		ArrayList<Card> ListCard = new ArrayList<Card>();
+		int i=Integer.parseInt(id);
+		Iterable<Card> allCards =cRepository.findAll();
+		Iterator<Card> iterator = allCards.iterator();
+		while(iterator.hasNext()) {
+		    Card it = iterator.next();
+		    if (it.getOwnerId() == i) {
+		    	ListCard.add(it);
+		    }
+		}
+		return ListCard;
 	}
 }

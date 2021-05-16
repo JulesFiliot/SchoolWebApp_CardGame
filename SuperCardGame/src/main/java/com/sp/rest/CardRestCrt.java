@@ -1,6 +1,8 @@
 
 package com.sp.rest;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.sp.model.Card;
 import com.sp.service.CardService;
+
 
 @RestController
 public class CardRestCrt {
@@ -29,6 +32,7 @@ public class CardRestCrt {
         return c;
     }
     
+
     //Affichage de liste des cartes
     @RequestMapping("/cardList")
     public ModelAndView page (@CookieValue(value = "id", defaultValue = "0") String id) {
@@ -44,5 +48,11 @@ public class CardRestCrt {
         //modelAndView.addObject("cardName", name);
         
         return modelAndView;
+    }
+    
+    @RequestMapping(method=RequestMethod.GET,value="/mycards")
+    public ArrayList<Card> getMyCards(@CookieValue(value = "id", defaultValue = "0") String id) {
+    	ArrayList<Card> cards = cService.getMyCards(id);
+    	return cards;
     }
 }
