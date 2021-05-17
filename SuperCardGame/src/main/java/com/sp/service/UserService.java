@@ -36,11 +36,9 @@ public class UserService {
         while(iterator.hasNext() && cpt < 5) {
            Card c = iterator.next();
            if (c.getOwnerId() == 0) {
-        	   System.out.println(c.getOwnerId());
         	   c.setOwnerId(createdUser.getId());
-        	   System.out.println(c.getOwnerId());
         	   cpt++;
-        	   System.out.println(c);
+        	   cRepository.save(c);
            }
         }
 	}
