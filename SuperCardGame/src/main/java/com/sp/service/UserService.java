@@ -26,6 +26,8 @@ public class UserService {
 	UserRepository uRepository;
 	@Autowired
 	CardRepository cRepository;
+	@Autowired
+	CardService cService;
 	public void addUser(User u) {
 		User createdUser=uRepository.save(u);
 		System.out.println(createdUser);
@@ -33,8 +35,12 @@ public class UserService {
 		Iterable<Card> allCards = cRepository.findAll();
         Iterator<Card> iterator = allCards.iterator();
         int cpt = 0;
-        while(iterator.hasNext() && cpt < 5) {
-           Card c = iterator.next();
+        while(cpt < 5) {
+        	if (!iterator.hasNext()) {
+        		cService.createAllCards();
+        		allCards = cRepository.findAll();
+                iterator = allCards.iterator();
+        	}           Card c = iterator.next();
            if (c.getOwnerId() == 0) {
         	   c.setOwnerId(createdUser.getId());
         	   cpt++;
