@@ -9,11 +9,13 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-  import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.PathVariable;
   import org.springframework.web.bind.annotation.RequestBody;
   import org.springframework.web.bind.annotation.RequestMapping;
   import org.springframework.web.bind.annotation.RequestMethod;
   import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.sp.model.Card;
 import com.sp.model.User;
@@ -56,6 +58,15 @@ import com.sp.model.User;
       public ArrayList<User> getAllUsers() {
       	ArrayList<User> users = uService.getAllUsers();
       	return users;
+      }
+      
+      @RequestMapping(value="/hud")
+      public ModelAndView hud(@CookieValue(value = "id", defaultValue = "0") String id) {
+		  ModelAndView modelAndView = new ModelAndView();
+	      modelAndView.addObject("userName", getUser(id).getName());
+	      modelAndView.addObject("userMoney",getUser(id).getMoney()+"$");
+		  modelAndView.setViewName("hud");
+		  return modelAndView; 
       }
       
   }

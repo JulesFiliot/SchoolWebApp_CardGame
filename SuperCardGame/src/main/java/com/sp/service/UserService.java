@@ -104,11 +104,14 @@ public class UserService {
      }
      
      public void cardBought(String id) {
-    	 getUser(Integer.parseInt(id)).setMoney(getUser(Integer.parseInt(id)).getMoney()-50);
-    	 
+    	 User u =getUser(Integer.parseInt(id));
+    	 u.setMoney(getUser(Integer.parseInt(id)).getMoney()-50);
+    	 uRepository.save(u);
      }
 
 	public void cardSold(String id) {
-   	 getUser(Integer.parseInt(id)).setMoney(getUser(Integer.parseInt(id)).getMoney()+50);
-	}
+	   	 User u =getUser(Integer.parseInt(id));
+	   	 u.setMoney(getUser(Integer.parseInt(id)).getMoney()+50);
+	   	 uRepository.save(u);	
+	   	 }
 }

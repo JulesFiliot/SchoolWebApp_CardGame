@@ -13,19 +13,24 @@ import com.sp.service.CardService;
 public class MarketService {
 	@Autowired
 	UserService uService;
+	@Autowired
 	CardService cService;
 
 
 	public void buyCard(String id, String cid) {
 		System.out.println("lesgo");
-		uService.cardBought(id);
-		cService.cardBought(id,cid);
+
+		if(cService.cardBought(id,cid)) {
+			uService.cardBought(id);
+		}
 	}
 
 	public void sellCard(String id, String cid) {
 		System.out.println("lesgo");
-		uService.cardSold(id);
-		cService.cardSold(cid);
+		if(cService.cardSold(cid)) {
+			uService.cardSold(id);
+		}
+
 	}
 	
 	public void testU(String str) {

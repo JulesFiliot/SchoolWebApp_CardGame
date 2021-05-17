@@ -38,7 +38,8 @@ import com.sp.service.UserService;
     		    //add cookie to response
     		  response.addCookie(cookie);
     		  ModelAndView modelAndView = new ModelAndView();
-    		  modelAndView.setViewName("index");
+    	      modelAndView.addObject("userName", uService.getUser(id).getName());
+    		  modelAndView.setViewName("hud");
     		  return modelAndView; 
     		  }
     	  
@@ -51,10 +52,12 @@ import com.sp.service.UserService;
       
 
       @RequestMapping("/logout")
-      public void logout(HttpServletResponse response) {
+      public ModelAndView logout(HttpServletResponse response) {
 		  Cookie cookie = new Cookie("id", "0");
 		  response.addCookie(cookie);
-		  return;
+		  ModelAndView modelAndView = new ModelAndView();
+		  modelAndView.setViewName("index");
+		  return modelAndView;
       }
 
       @RequestMapping(value="/signin")

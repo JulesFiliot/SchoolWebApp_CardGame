@@ -16,6 +16,7 @@ import java.util.Iterator;
 public class CardService {	
 	@Autowired
 	CardRepository cRepository;
+	@Autowired
 	UserService uService;
 	
 	public void addCard(Card c) {
@@ -41,8 +42,14 @@ public class CardService {
 
 
 
-	public void cardBought(String id, String cid) {
-		getCard(Integer.parseInt(cid)).setOwnerId(Integer.parseInt(cid));
+	public boolean cardBought(String id, String cid) {
+		Card c =getCard(Integer.parseInt(cid));
+		if (c!=null) {
+			c.setOwnerId(Integer.parseInt(id));
+			cRepository.save(c);	
+			return true;
+		}
+		return false;
 	}
 	
 	public ArrayList<Card> getMyCards(String id) {
@@ -70,7 +77,14 @@ public class CardService {
 		return ListCard;
 	}
 
-	public void cardSold(String cid) {
-		getCard(Integer.parseInt(cid)).setOwnerId(0);		
+	public boolean cardSold(String cid) {
+		Card c =getCard(Integer.parseInt(cid));
+		if(c!=null) {
+			c.setOwnerId((Integer )0);
+			cRepository.save(c);
+			return true;
+		}
+		return false;
+		
 	}
 }
