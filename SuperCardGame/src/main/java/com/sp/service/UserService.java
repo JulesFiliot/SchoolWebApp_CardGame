@@ -1,5 +1,6 @@
 package com.sp.service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
@@ -36,11 +37,12 @@ public class UserService {
            Card c = iterator.next();
            if (c.getOwnerId() == 0) {
         	   System.out.println(c.getOwnerId());
-        	   c.setOwnerId(u.getId());
+        	   c.setOwnerId(createdUser.getId());
         	   System.out.println(c.getOwnerId());
         	   cpt++;
         	   System.out.println(c);
-           }}
+           }
+        }
 	}
 	
 	public User getUser(int id) {
@@ -84,6 +86,18 @@ public class UserService {
    	    return id;
      }
      
+
+ 	public ArrayList<User> getAllUsers() {
+		ArrayList<User> ListUser = new ArrayList<User>();
+		Iterable<User> allUsers =uRepository.findAll();
+		Iterator<User> iterator = allUsers.iterator();
+		while(iterator.hasNext()) {
+		    User it = iterator.next();
+		    ListUser.add(it);
+		}
+		return ListUser;
+ 	}
+
      public void signIn(String username, String password) {
     	 User u= new User(username,password);
     	 addUser(u); 	 
@@ -96,6 +110,5 @@ public class UserService {
 
 	public void cardSold(String id) {
    	 getUser(Integer.parseInt(id)).setMoney(getUser(Integer.parseInt(id)).getMoney()+50);
-		
 	}
 }
