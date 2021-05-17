@@ -44,10 +44,6 @@ public class CardRestCrt {
         userCards = cService.getMyCards(id);
         modelAndView.addObject("userCards", userCards);
         
-        //Card c=cService.getCard(1);
-        //String name = c.getName();
-        //modelAndView.addObject("cardName", name);
-        
         return modelAndView;
     }
     
@@ -57,6 +53,7 @@ public class CardRestCrt {
     	return cards;
     }
     
+    //GET la liste des cartes de l'utilisateur connecté
     @RequestMapping(method=RequestMethod.GET,value="/allcards")
     public ArrayList<Card> getAllCards() {
     	ArrayList<Card> cards = cService.getAllCards();
