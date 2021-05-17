@@ -26,10 +26,16 @@ import com.sp.service.MarketService;
       MarketService mService;
       
       
-      @RequestMapping("/buy/{cid}")
+      @RequestMapping("/buyCard/{cid}")
       public void buyCard (@CookieValue(value = "id", defaultValue = "0") String id, @PathVariable String cid) {
   		  System.out.println("Je veux acheter la carte d'id "+cid);
   		  mService.buyCard(id, cid);	  
+      }
+      
+      @RequestMapping("/sellCard/{cid}")
+      public void sellCard (@CookieValue(value = "id", defaultValue = "0") String id, @PathVariable String cid) {
+  		  System.out.println("Je veux vendre la carte d'id "+cid);
+  		  mService.sellCard(id, cid);	  
       }
       
       @RequestMapping("/testU/{str}")

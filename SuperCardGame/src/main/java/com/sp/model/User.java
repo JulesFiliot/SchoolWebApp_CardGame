@@ -20,7 +20,7 @@ public class User {
 		super();
 		this.name=name;
 		this.password=password;
-		this.money=500;
+		this.money = 500;
 		
 	}
 	
