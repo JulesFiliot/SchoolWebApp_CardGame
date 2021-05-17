@@ -84,6 +84,10 @@ public class CardRestCrt {
         cService.addCard(c);
         c = new Card(9,"Kagura","Neo Armstrong Cyclone Jet",250,null,0);
         cService.addCard(c);
+        c = new Card(10, "Meriodasu", "Full counter", 60,null,0);
+        cService.addCard(c);
+        c = new Card(11, "Pain", "Shinra Tensei" , 110, null,0);
+        cService.addCard(c);
 
         return;
     }
