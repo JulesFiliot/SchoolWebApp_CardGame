@@ -1,6 +1,7 @@
 package com.sp.service;
 
 import java.util.Optional;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -86,5 +87,28 @@ public class CardService {
 		}
 		return false;
 		
+	}
+	
+	public void createAllCards() {
+		Random rand = new Random();
+		int nombreAleatoire = rand.nextInt(12);
+		int i = 0;
+		Card c;
+		while (i < 50) {
+			if (nombreAleatoire == 0) {c = new Card(0,"San Goku","KAMEHAMEHA!",80,null,0);}
+			else if (nombreAleatoire == 1) {c = new Card(0,"Saitama","Série de coups sérieux",200,null,0);}
+			else if (nombreAleatoire == 2) {c = new Card(0,"Ener","El Thor",110,null,0); }
+			else if (nombreAleatoire == 3) {c = new Card(0,"Midorya","Texas Smash",90,null,0);}
+			else if (nombreAleatoire == 4) {c = new Card(0,"Hero","Gigantaille",60,null,0);}
+			else if (nombreAleatoire == 5) {c = new Card(0,"Magicarpe","Trempette",0,null,0);}
+			else if (nombreAleatoire == 6) {c = new Card(0,"Griffith","Eclipse",400,null,0);}
+			else if (nombreAleatoire == 7) {c = new Card(0,"Mirajane","Forme Démoniaque",80,null,0);}
+			else if (nombreAleatoire == 8) {c = new Card(0,"Kagura","Neo Armstrong Cyclone Jet",250,null,0);}
+			else if (nombreAleatoire == 9) {c = new Card(0, "Meriodasu", "Full counter", 60,null,0);}
+			else {c = new Card(0, "Pain", "Shinra Tensei" , 110, null,0);}
+	        addCard(c);
+	        nombreAleatoire = rand.nextInt(12);
+			i++;
+		}
 	}
 }

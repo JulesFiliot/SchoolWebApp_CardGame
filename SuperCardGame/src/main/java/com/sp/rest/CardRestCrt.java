@@ -65,30 +65,7 @@ public class CardRestCrt {
     
     @RequestMapping(value="/createAllCards")
     public void createAllCards() {
-  	  
-        Card c= new Card(1,"San Goku","KAMEHAMEHA!",80,null,0);
-        cService.addCard(c);
-        c = new Card(2,"Saitama","Série de coups sérieux",200,null,0);
-        cService.addCard(c);
-        c = new Card(3,"Ener","El Thor",110,null,0);
-        cService.addCard(c);
-        c = new Card(4,"Midorya","Texas Smash",90,null,0);
-        cService.addCard(c);
-        c = new Card(5,"Hero","Gigantaille",60,null,0);
-        cService.addCard(c);
-        c = new Card(6,"Magicarpe","Trempette",0,null,0);
-        cService.addCard(c);
-        c = new Card(7,"Griffith","Eclipse",400,null,0);
-        cService.addCard(c);
-        c = new Card(8,"Mirajane","Forme Démoniaque",80,null,0);
-        cService.addCard(c);
-        c = new Card(9,"Kagura","Neo Armstrong Cyclone Jet",250,null,0);
-        cService.addCard(c);
-        c = new Card(10, "Meriodasu", "Full counter", 60,null,0);
-        cService.addCard(c);
-        c = new Card(11, "Pain", "Shinra Tensei" , 110, null,0);
-        cService.addCard(c);
-
+    	cService.createAllCards();
         return;
     }
 }
