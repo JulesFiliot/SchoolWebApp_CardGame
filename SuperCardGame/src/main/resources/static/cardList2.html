@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
         <!-- Standard Meta -->
         <meta charset="utf-8" />
@@ -9,8 +9,8 @@
         <!-- Site Properties -->
         <title>Grid Example - Semantic</title>
 
-        <link rel="stylesheet" type="text/css" href="/lib/Semantic-UI-CSS-master/semantic.min.css">
-        <link rel="stylesheet" type="text/css" href="/css/custom.css">
+        <link rel="stylesheet" type="text/css" th:href="@{/lib/Semantic-UI-CSS-master/semantic.min.css}">
+        <link rel="stylesheet" type="text/css" th:href="@{/css/custom.css}">
 
     </head>
 
@@ -19,7 +19,7 @@
             <h3 class="ui right floated header">
                 <i class="user circle outline icon"></i>
                 <div class="content">
-                    <span id="userNameId" text="${userName}">Jdoe</span>
+                    <span id="userNameId" th:text="${userName}">Jdoe</span>
                     <div class="sub header"><span>5000</span>$</div>
                 </div>
             </h3>
@@ -56,11 +56,11 @@
                     </thead>
                     <tbody id="tableContent">
                         <template id="row">
-<!--                         	<tr> -->
-<!--     							<th>NomCarte</th> -->
-<!--     							<th>PowerCarte</th> -->
-<!-- 							</tr> -->
-                             <tr>
+                        	<tr>
+    							<th>NomCarte</th>
+    							<th>PowerCarte</th>
+							</tr>
+                            <!-- <tr>
                                 <td>
                                     <img  class="ui avatar image" src={{img_src}}> <span>{{name}}</span>
                                 </td>
@@ -79,7 +79,7 @@
                                         </div>
                                     </div>
                                 </td>
-                            </tr>
+                            </tr> -->
                             <!-- <tr th:each="card: ${userCards}">
     							<th>NomCarte<th th:text="${card.getName()}" />
     							<th>PowerCarte<th th:text="${card.getSuperPowerName}" />
@@ -99,8 +99,8 @@
 
         </div>
 
-        <script src="./lib/jquery-3.3.1.min.js"></script>
-        <script src="./lib/Semantic-UI-CSS-master/semantic.js"></script>
+        <script src="../lib/jquery-3.3.1.min.js"></script>
+        <script src="../lib/Semantic-UI-CSS-master/semantic.js"></script>
         <script src="./js/cardList.js"></script> 
         
         <script>

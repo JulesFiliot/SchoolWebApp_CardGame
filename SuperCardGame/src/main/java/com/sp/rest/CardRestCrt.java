@@ -15,7 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.sp.model.Card;
 import com.sp.service.CardService;
 
-
 @RestController
 public class CardRestCrt {
     @Autowired
@@ -32,16 +31,17 @@ public class CardRestCrt {
         return c;
     }
     
-
     //Affichage de liste des cartes
-    @RequestMapping("/cardList")
+    @RequestMapping("/cardList")		
     public ModelAndView page (@CookieValue(value = "id", defaultValue = "0") String id) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("cardList");
         
         String userName = cService.getUserName(id);
+        ArrayList<Card> userCards;
         modelAndView.addObject("userName", userName);
-        System.out.println(userName);
+        userCards = cService.getMyCards(id);
+        modelAndView.addObject("userCards", userCards);
         
         //Card c=cService.getCard(1);
         //String name = c.getName();

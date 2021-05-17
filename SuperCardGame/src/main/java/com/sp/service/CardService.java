@@ -12,11 +12,19 @@ import com.sp.repository.CardRepository;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import com.sp.service.UserService;
+
 @Service
 public class CardService {	
-	@Autowired
-	CardRepository cRepository;
-	UserService uService;
+	
+	private final CardRepository cRepository;
+	private final UserService uService;
+	
+	public CardService(CardRepository cRepository, UserService uService) {
+		this.cRepository = cRepository;
+		this.uService = uService;
+	}
+	
 	
 	public void addCard(Card c) {
 		Card createdCard=cRepository.save(c);
@@ -34,17 +42,28 @@ public class CardService {
 	
 	//Retourne le nom de l'utilisateur connecté grâce à l'id du cookie
 	public String getUserName(@CookieValue(value = "id", defaultValue = "0") String id) {
+		String ret;
 		String name;
-		name = uService.getUser(Integer.parseInt(id)).getName();
-		return name;
+		int integerId;
+		
+		integerId = Integer.parseInt(id);
+		name = uService.getUser(integerId).getName();
+		System.out.println(name);
+		if (name == null) {
+			ret = "none";
+		}
+		else {
+			ret = name;
+		}
+		
+		return ret;
 	}
-
-
 
 	public void cardBought(String id, String cid) {
 		getCard(Integer.parseInt(cid)).setOwnerId(Integer.parseInt(cid));
 	}
 	
+	//Retourne la liste des cartes d'un utilisateur
 	public ArrayList<Card> getMyCards(String id) {
 		ArrayList<Card> ListCard = new ArrayList<Card>();
 		int i=Integer.parseInt(id);

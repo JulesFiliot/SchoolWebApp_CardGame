@@ -56,15 +56,12 @@
                     </thead>
                     <tbody id="tableContent">
                         <template id="row">
-<!--                         	<tr> -->
-<!--     							<th>NomCarte</th> -->
-<!--     							<th>PowerCarte</th> -->
-<!-- 							</tr> -->
+                        	
                              <tr>
                                 <td>
                                     <img  class="ui avatar image" src={{img_src}}> <span>{{name}}</span>
                                 </td>
-                                <td>name</td>
+                                <td>{{name}}</td>
                                 <td>{{family_name}}</td>
                                 <td>{{hp}}</td>
                                 <td>{{energy}}</td>
@@ -79,7 +76,7 @@
                                         </div>
                                     </div>
                                 </td>
-                            </tr>
+                            </tr> 
                             <!-- <tr th:each="card: ${userCards}">
     							<th>NomCarte<th th:text="${card.getName()}" />
     							<th>PowerCarte<th th:text="${card.getSuperPowerName}" />
