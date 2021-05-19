@@ -39,7 +39,7 @@ import com.sp.service.UserService;
     		    //add cookie to response
     		  response.addCookie(cookie);
     		  try {
-				response.sendRedirect("hub.html");
+				response.sendRedirect("fetch.html");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -57,19 +57,16 @@ import com.sp.service.UserService;
       }
 
       @RequestMapping(value="/signin")
-      public void signin(@RequestParam(name="username", required=false, defaultValue="") String username,@RequestParam(name="password", required=false, defaultValue="") String password,HttpServletResponse response) {
+      public ModelAndView signin(@RequestParam(name="username", required=false, defaultValue="") String username,@RequestParam(name="password", required=false, defaultValue="") String password) {
           if (!username.equals("") && !password.equals("")) {
         	  uService.signIn(username, password);
-    		  try {
-				response.sendRedirect("index.html");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-    		  return;
+    		  ModelAndView modelAndView = new ModelAndView();
+    		  modelAndView.setViewName("index");
+    		  return modelAndView;
           }
-
-		  return;
+		  ModelAndView modelAndView = new ModelAndView();
+		  modelAndView.setViewName("signin");
+		  return modelAndView;
       }
       /*@RequestMapping("/consolecookie")
       public void consolecookie(HttpServletRequest req) {
