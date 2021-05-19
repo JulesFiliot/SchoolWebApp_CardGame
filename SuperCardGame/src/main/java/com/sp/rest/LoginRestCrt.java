@@ -52,7 +52,15 @@ import com.sp.service.UserService;
       @RequestMapping("/logout")
       public void logout(HttpServletResponse response) {
 		  Cookie cookie = new Cookie("id", "0");
+  		  System.out.println("kiku");
+
 		  response.addCookie(cookie);
+		  try {
+				response.sendRedirect("index.html");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		  return;
       }
 
