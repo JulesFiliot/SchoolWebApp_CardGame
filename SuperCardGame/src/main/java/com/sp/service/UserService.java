@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CookieValue;
 
@@ -27,7 +28,9 @@ public class UserService {
 	@Autowired
 	CardRepository cRepository;
 	@Autowired
+	@Lazy
 	CardService cService;
+	
 	public void addUser(User u) {
 		User createdUser=uRepository.save(u);
 		System.out.println(createdUser);

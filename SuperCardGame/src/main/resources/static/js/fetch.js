@@ -6,9 +6,7 @@ function generate(){
                     };
         
     fetch(GET_CARDS_URL,context)
-    	.then(reponse => reponse.json())
-    	.then(response => test_callback(response))
-        .then(response => callback(response))
+    	.then(reponse => reponse.json().then(body => test_callback(body)))
         .catch(error => err_callback(error));
 }
 
