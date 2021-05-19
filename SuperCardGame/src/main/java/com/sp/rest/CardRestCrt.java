@@ -33,19 +33,13 @@ public class CardRestCrt {
     }
     
     //Affichage de liste des cartes
-    @RequestMapping("/cardList")		
+    /*@RequestMapping("/cardList")		
     public ModelAndView page (@CookieValue(value = "id", defaultValue = "0") String id) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("cardList");
         
-        String userName = cService.getUserName(id);
-        ArrayList<Card> userCards;
-        modelAndView.addObject("userName", userName);
-        userCards = cService.getMyCards(id);
-        modelAndView.addObject("userCards", userCards);
-        
         return modelAndView;
-    }
+    }*/
     
     @RequestMapping(method=RequestMethod.GET,value="/mycards")
     public ArrayList<Card> getMyCards(@CookieValue(value = "id", defaultValue = "0") String id) {
