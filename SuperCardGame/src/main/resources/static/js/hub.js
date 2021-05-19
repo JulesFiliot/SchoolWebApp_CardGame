@@ -6,27 +6,14 @@ function generate(){
                     };
         
     fetch(GET_USER_URL,context)
-    	.then(reponse => reponse.json().then(body => test_callback(body)))
+    	.then(reponse => reponse.json().then(body => callback(body)))
         .catch(error => err_callback(error));
 }
 
 function callback(response){
 	
-	for(var i = 0; i < reponse.length; i++) {
-    	document.getElementById("currentMoney").innerHTML = response[i].name;
-    	console.log(reponse[i].name);
-	}
-}
-
-function test_callback(message) {
-
-	for(var i = 0; i < message.length; i++) {
-    	document.getElementById("currentMoney").innerHTML = message[i].name;
-    	console.log(message[i].name);
-    }
-	console.log(message[1]);
-	console.log("OUAIS !");
-	console.log(message[0].name);
+    document.getElementById("currentMoney").innerHTML = "Current money : " + response.money + "€";
+    console.log(response.name);
 }
 
 function err_callback(error){
