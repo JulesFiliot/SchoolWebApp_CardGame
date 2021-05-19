@@ -60,6 +60,12 @@ import com.sp.model.User;
       	return users;
       }
       
+      @RequestMapping(method=RequestMethod.GET,value="/infoUser")
+      public User getMyUser(@CookieValue(value = "id", defaultValue = "0") String id) {
+          User u=uService.getMyUser(id);
+          return u;
+      }
+      
       @RequestMapping(value="/hud")
       public ModelAndView hud(@CookieValue(value = "id", defaultValue = "0") String id) {
 		  ModelAndView modelAndView = new ModelAndView();
