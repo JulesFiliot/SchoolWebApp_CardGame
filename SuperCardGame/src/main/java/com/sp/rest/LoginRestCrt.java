@@ -61,7 +61,7 @@ import com.sp.service.UserService;
           if (!username.equals("") && !password.equals("")) {
         	  uService.signIn(username, password);
     		  try {
-				response.sendRedirect("hub.html");
+				response.sendRedirect("index.html");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
