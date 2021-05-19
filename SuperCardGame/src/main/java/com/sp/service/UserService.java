@@ -104,6 +104,21 @@ public class UserService {
 		}
 		return ListUser;
  	}
+ 	
+ 	public User getMyUser(String id) {
+ 		User u = null;
+ 		int i=Integer.parseInt(id);
+		Iterable<User> allUsers =uRepository.findAll();
+		Iterator<User> iterator = allUsers.iterator();
+		while(iterator.hasNext()) {
+		    User it = iterator.next();
+		    if (it.getId() == i) {
+		    	u = it;
+		    	break;
+		    }
+		}
+ 		return u;
+ 	}
 
      public void signIn(String username, String password) {
     	 User u= new User(username,password);

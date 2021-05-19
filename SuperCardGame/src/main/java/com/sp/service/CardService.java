@@ -94,6 +94,20 @@ public class CardService {
 		}
 		return ListCard;
 	}
+	
+	//Retourne la liste des cartes d'un utilisateur
+	public ArrayList<Card> getMarketCards() {
+		ArrayList<Card> ListCard = new ArrayList<Card>();
+		Iterable<Card> allCards =cRepository.findAll();
+		Iterator<Card> iterator = allCards.iterator();
+		while(iterator.hasNext()) {
+		    Card it = iterator.next();
+		    if (it.getOwnerId() == 0) {
+		    	ListCard.add(it);
+		    }
+		}
+		return ListCard;
+	}
 
 	public boolean cardSold(String cid) {
 		Card c =getCard(Integer.parseInt(cid));

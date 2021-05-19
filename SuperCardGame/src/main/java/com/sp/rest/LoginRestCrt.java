@@ -1,6 +1,7 @@
  package com.sp.rest;
 
-  import java.util.Arrays;
+  import java.io.IOException;
+import java.util.Arrays;
 import java.util.Optional;
 
 import javax.servlet.http.Cookie;
@@ -27,7 +28,7 @@ import com.sp.service.UserService;
       
       
       @RequestMapping("/login")
-      public ModelAndView page (@RequestParam(name="username", required=false, defaultValue="") String username,@RequestParam(name="password", required=false, defaultValue="") String password,HttpServletResponse response) {
+      public void page (@RequestParam(name="username", required=false, defaultValue="") String username,@RequestParam(name="password", required=false, defaultValue="") String password,HttpServletResponse response) {
   		  System.out.println(username);
   		  System.out.println(password);
     	  int id = uService.checkUser(username, password);
@@ -37,40 +38,46 @@ import com.sp.service.UserService;
 
     		    //add cookie to response
     		  response.addCookie(cookie);
-    		  ModelAndView modelAndView = new ModelAndView();
-    	      modelAndView.addObject("userName", uService.getUser(id).getName());
-    		  modelAndView.setViewName("hud");
-    		  return modelAndView; 
-    		  }
-    	  
-    	  else{
-    		  ModelAndView modelAndView = new ModelAndView();
-    		  modelAndView.setViewName("login");
-    		  return modelAndView;
+    		  try {
+				response.sendRedirect("hub.html");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    		  return ;
     		  }
       }
       
 
       @RequestMapping("/logout")
-      public ModelAndView logout(HttpServletResponse response) {
+      public void logout(HttpServletResponse response) {
 		  Cookie cookie = new Cookie("id", "0");
+  		  System.out.println("kiku");
+
 		  response.addCookie(cookie);
-		  ModelAndView modelAndView = new ModelAndView();
-		  modelAndView.setViewName("index");
-		  return modelAndView;
+		  try {
+				response.sendRedirect("index.html");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		  return;
       }
 
       @RequestMapping(value="/signin")
-      public ModelAndView signin(@RequestParam(name="username", required=false, defaultValue="") String username,@RequestParam(name="password", required=false, defaultValue="") String password) {
+      public void signin(@RequestParam(name="username", required=false, defaultValue="") String username,@RequestParam(name="password", required=false, defaultValue="") String password,HttpServletResponse response) {
           if (!username.equals("") && !password.equals("")) {
         	  uService.signIn(username, password);
-    		  ModelAndView modelAndView = new ModelAndView();
-    		  modelAndView.setViewName("index");
-    		  return modelAndView;
+    		  try {
+				response.sendRedirect("index.html");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    		  return;
           }
-		  ModelAndView modelAndView = new ModelAndView();
-		  modelAndView.setViewName("signin");
-		  return modelAndView;
+
+		  return;
       }
       /*@RequestMapping("/consolecookie")
       public void consolecookie(HttpServletRequest req) {
