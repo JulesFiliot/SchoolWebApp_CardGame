@@ -60,6 +60,12 @@ public class CardRestCrt {
     	return cards;
     }
     
+    @RequestMapping(method=RequestMethod.GET,value="/marketCards")
+    public ArrayList<Card> getMarketCards() {
+    	ArrayList<Card> cards = cService.getMarketCards();
+    	return cards;
+    }
+    
     @RequestMapping(value="/createAllCards")
     public void createAllCards() {
     	cService.createAllCards();
