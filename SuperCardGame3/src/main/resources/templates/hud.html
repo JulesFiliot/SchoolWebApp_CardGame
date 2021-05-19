@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <!-- Standard Meta -->
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+        <!-- Site Properties -->
+        <title>User HUD</title>
+
+        <link rel="stylesheet" type="text/css" href="../lib/Semantic-UI-CSS-master/semantic.min.css">
+        <link rel="stylesheet" type="text/css" href="css/custom.css">
+
+    </head>
+
+    <body>
+        <div class="ui five column grid">
+            <div class="row"></div>
+            <div class="column"></div>
+            <div class="column"></div>
+            <div class="column">
+                    <h3 class="ui dividing header"> User HUD </h3>
+					<p id="userNameId" th:text="${userName}">Please Log In</p>
+                    <p id="userNameId" th:text="${userMoney}"></p>
+					<a href="/logout">Log Out</a>
+
+            </div>
+        </div>
+    </body>
+</html>
