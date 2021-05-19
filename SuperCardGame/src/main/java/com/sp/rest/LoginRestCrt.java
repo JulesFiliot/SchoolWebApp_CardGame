@@ -53,6 +53,12 @@ import com.sp.service.UserService;
       public void logout(HttpServletResponse response) {
 		  Cookie cookie = new Cookie("id", "0");
 		  response.addCookie(cookie);
+		  try {
+				response.sendRedirect("index.html");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		  return;
       }
 
