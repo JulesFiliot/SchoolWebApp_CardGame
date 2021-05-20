@@ -10,21 +10,31 @@ public class Card {
 	@GeneratedValue
 	private Integer id;
 	private String name;
-	private String superPowerName;
-	private int superPowerValue;
-	private String imgUrl;
+	private String description;
+	private String family;
+	private int hp;
+	private int energy;
+	private int defense;
+	private int attack;
+	private String imgSrc;
+	private int price;
 	private Integer ownerId = 0;
 	
 	public Card() {
 	}
 
-	public Card(int id,String name, String superPowerName, int superPowerValue, String imgUrl, int ownerId) {
+	public Card(int id,String name, String description, String family, int hp, int energy, int defense, int attack, String imgSrc,int price, int ownerId) {
 		super();
 		this.id=id;
 		this.name = name;
-		this.superPowerName = superPowerName;
-		this.superPowerValue = superPowerValue;
-		this.imgUrl = imgUrl;
+		this.description = description;
+		this.family = family;
+		this.hp = hp;
+		this.energy = energy;
+		this.defense = defense;
+		this.attack = attack;
+		this.imgSrc = imgSrc;
+		this.price = price;
 		this.ownerId = ownerId;
 	}
 
@@ -45,40 +55,80 @@ public class Card {
 		this.ownerId = ownerId;
 	}
 
-	public String getSuperPowerName() {
-		return superPowerName;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setSuperPowerName(String superPowerName) {
-		this.superPowerName = superPowerName;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public int getSuperPowerValue() {
-		return superPowerValue;
+	public String getFamily() {
+		return family;
 	}
 
-	public void setSuperPowerValue(int superPowerValue) {
-		this.superPowerValue = superPowerValue;
+	public void setFamily(String family) {
+		this.family = family;
+	}
+	
+	public int getHp() {
+		return hp;
 	}
 
-	public String getImgUrl() {
-		return imgUrl;
+	public void setHp(int hp) {
+		this.hp = hp;
+	}
+	
+	public int getEnergy() {
+		return energy;
 	}
 
-	public void setImgUrl(String imgUrl) {
-		this.imgUrl = imgUrl;
+	public void setEnergy(int energy) {
+		this.energy = energy;
+	}
+
+	public int getDefense() {
+		return defense;
+	}
+
+	public void setDefense(int defense) {
+		this.defense = defense;
+	}
+	
+	public int getAttack() {
+		return attack;
+	}
+
+	public void setAttack(int attack) {
+		this.attack = attack;
+	}
+	
+	public String getImgSrc() {
+		return imgSrc;
+	}
+
+	public void setImgSrc(String imgSrc) {
+		this.imgSrc = imgSrc;
+	}
+	
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
 	}
 	
 	public int getId() {
 		return id;
 	}
-
+	
 	public void setId(int id) {
 		this.id = id;
 	}
 
 	@Override
 	public String toString() {
-		return "Card ["+this.id+"]: name:"+this.name+", superPowerName:"+this.superPowerName+", superPowerValue:"+this.superPowerValue+" imgUrl:"+this.imgUrl;
+		return "Card ["+this.id+"]: name:"+this.name+", description:"+this.description+", family:"+this.family+", hp:"+this.hp+", energy:"+this.energy+", defense:"+this.defense+", attack:"+this.attack+" imgSrc:"+this.imgSrc;
 	}
 }
