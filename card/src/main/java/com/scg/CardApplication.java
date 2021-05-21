@@ -1,4 +1,4 @@
-package com.scg.card;
+package com.scg;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
