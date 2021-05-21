@@ -1,4 +1,4 @@
-package com.sp.model;
+package com.scg.user.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
