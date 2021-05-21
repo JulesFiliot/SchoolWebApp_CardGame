@@ -3,8 +3,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.project.springboot</groupId>
-	<artifactId>SuperCardGame</artifactId>
+	<groupId>com.scg.springboot</groupId>
+	<artifactId>card</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	
@@ -15,7 +15,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	
-	<name>SPWebApp</name>
+	<name>card</name>
 	<description>Project Sample for using Springboot</description>
 
 	<properties>
