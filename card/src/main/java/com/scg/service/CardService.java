@@ -140,4 +140,17 @@ public class CardService {
 			i++;
 		}
 	}
+
+	public ArrayList<Card> generateCards() {
+		int cpt = 0;
+		ArrayList<Card> ListCard = new ArrayList<Card>();
+		Iterable<Card> allCards =cRepository.findAll();
+		Iterator<Card> iterator = allCards.iterator();
+		while(iterator.hasNext() && cpt < 5 ) {
+		    Card it = iterator.next();
+		    ListCard.add(it);
+		    cpt++;
+		}
+		return ListCard;		
+	}
 }

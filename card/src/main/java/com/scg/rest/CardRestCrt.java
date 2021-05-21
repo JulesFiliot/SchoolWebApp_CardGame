@@ -64,4 +64,10 @@ public class CardRestCrt {
     	cService.createAllCards();
         return;
     }
+    
+    @RequestMapping(value="/generateCards")
+    public void generateCards() {
+    	cService.generateCards();
+    	return;
+    }
 }
