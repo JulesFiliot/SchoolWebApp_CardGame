@@ -65,9 +65,9 @@ public class CardRestCrt {
         return;
     }
     
-    @RequestMapping(value="/generateCards")
-    public void generateCards() {
-    	cService.generateCards();
+    @RequestMapping(value="/generateCards/{id}")
+    public void generateCards(@PathVariable String id) {
+    	cService.generateCards(id);
     	return;
     }
 }

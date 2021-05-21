@@ -141,16 +141,15 @@ public class CardService {
 		}
 	}
 
-	public ArrayList<Card> generateCards() {
+	public void generateCards(String id) {
 		int cpt = 0;
-		ArrayList<Card> ListCard = new ArrayList<Card>();
 		Iterable<Card> allCards =cRepository.findAll();
 		Iterator<Card> iterator = allCards.iterator();
 		while(iterator.hasNext() && cpt < 5 ) {
 		    Card it = iterator.next();
-		    ListCard.add(it);
+		    it.setOwnerId(Integer.parseInt(id));
+		    cRepository.save(it);
 		    cpt++;
-		}
-		return ListCard;		
+		}		
 	}
 }
