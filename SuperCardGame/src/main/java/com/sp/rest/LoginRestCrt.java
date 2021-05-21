@@ -70,10 +70,10 @@ import com.sp.service.UserService;
         	  uService.signIn(username, password);
     		  try {
 				response.sendRedirect("index.html");
-			} catch (IOException e) {
+    		  } catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+    		  }
     		  return;
           }
 

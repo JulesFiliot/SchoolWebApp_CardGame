@@ -1,6 +1,7 @@
  package com.sp.rest;
 
-  import java.util.Arrays;
+  import java.io.IOException;
+import java.util.Arrays;
 import java.util.Optional;
 
 import javax.servlet.http.Cookie;
@@ -27,15 +28,27 @@ import com.sp.service.MarketService;
       
       
       @RequestMapping("/buyCard/{cid}")
-      public void buyCard (@CookieValue(value = "id", defaultValue = "0") String id, @PathVariable String cid) {
+      public void buyCard (@CookieValue(value = "id", defaultValue = "0") String id, @PathVariable String cid, HttpServletResponse response) {
   		  System.out.println("Je veux acheter la carte d'id "+cid);
-  		  mService.buyCard(id, cid);	  
+  		  mService.buyCard(id, cid);
+  		  try {
+			  response.sendRedirect("../buy.html");
+		  } catch (IOException e) {
+			  // TODO Auto-generated catch block
+			  e.printStackTrace();
+		  }
       }
       
       @RequestMapping("/sellCard/{cid}")
-      public void sellCard (@CookieValue(value = "id", defaultValue = "0") String id, @PathVariable String cid) {
+      public void sellCard (@CookieValue(value = "id", defaultValue = "0") String id, @PathVariable String cid,HttpServletResponse response) {
   		  System.out.println("Je veux vendre la carte d'id "+cid);
-  		  mService.sellCard(id, cid);	  
+  		  mService.sellCard(id, cid);	
+  		  try {
+  			  response.sendRedirect("../sell.html");
+  		  } catch (IOException e) {
+  			  // TODO Auto-generated catch block
+  			  e.printStackTrace();
+		}
       }
       
       @RequestMapping("/testU/{str}")

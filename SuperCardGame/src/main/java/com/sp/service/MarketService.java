@@ -5,9 +5,11 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import com.sp.service.UserService;
+import com.sp.model.Card;
 import com.sp.service.CardService;
+
+import com.sp.model.User;
 
 @Service
 public class MarketService {
@@ -18,17 +20,24 @@ public class MarketService {
 
 
 	public void buyCard(String id, String cid) {
-		System.out.println("lesgo");
-
-		if(cService.cardBought(id,cid)) {
-			uService.cardBought(id);
+		User u = uService.getUser(Integer.parseInt(id));
+		Card c = cService.getCard(Integer.parseInt(cid));
+		if (c!=null) {
+			int p = c.getPrice();
+			int a = u.getMoney();
+			if (a >= p) {
+				if(cService.cardBought(id,cid)) {
+					uService.cardBought(id, p);
+				}
+			}
 		}
 	}
 
 	public void sellCard(String id, String cid) {
-		System.out.println("lesgo");
 		if(cService.cardSold(cid)) {
-			uService.cardSold(id);
+			Card c = cService.getCard(Integer.parseInt(cid));
+			int p = c.getPrice();
+			uService.cardSold(id,p);
 		}
 
 	}

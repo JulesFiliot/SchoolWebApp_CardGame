@@ -125,15 +125,15 @@ public class UserService {
     	 addUser(u); 	 
      }
      
-     public void cardBought(String id) {
+     public void cardBought(String id, int p) {
     	 User u =getUser(Integer.parseInt(id));
-    	 u.setMoney(getUser(Integer.parseInt(id)).getMoney()-50);
+    	 u.setMoney(getUser(Integer.parseInt(id)).getMoney()-p);
     	 uRepository.save(u);
      }
 
-	public void cardSold(String id) {
+	public void cardSold(String id, int p) {
 	   	 User u =getUser(Integer.parseInt(id));
-	   	 u.setMoney(getUser(Integer.parseInt(id)).getMoney()+50);
+	   	 u.setMoney(getUser(Integer.parseInt(id)).getMoney()+p);
 	   	 uRepository.save(u);	
 	   	 }
 }

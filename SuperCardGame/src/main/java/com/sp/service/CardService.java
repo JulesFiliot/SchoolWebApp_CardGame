@@ -35,7 +35,7 @@ public class CardService {
 		Optional<Card> cOpt =cRepository.findById(id);
 		if (cOpt.isPresent()) {
 			return cOpt.get();
-		}else {
+		} else {
 			return null;
 		}
 	}
@@ -122,22 +122,23 @@ public class CardService {
 	
 	public void createAllCards() {
 		Random rand = new Random();
-		int nombreAleatoire = rand.nextInt(12);
+		int nombreAleatoire = rand.nextInt(13);
 		int i = 0;
 		Card c;
 		while (i < 50) {
-			if (nombreAleatoire == 0) {c = new Card(0,"San Goku","KAMEHAMEHA!",80,null,0);}
-			else if (nombreAleatoire == 1) {c = new Card(0,"Saitama","Série de coups sérieux",200,null,0);}
-			else if (nombreAleatoire == 2) {c = new Card(0,"Ener","El Thor",110,null,0); }
-			else if (nombreAleatoire == 3) {c = new Card(0,"Midorya","Texas Smash",90,null,0);}
-			else if (nombreAleatoire == 4) {c = new Card(0,"Hero","Gigantaille",60,null,0);}
-			else if (nombreAleatoire == 5) {c = new Card(0,"Magicarpe","Trempette",0,null,0);}
-			else if (nombreAleatoire == 6) {c = new Card(0,"Griffith","Eclipse",400,null,0);}
-			else if (nombreAleatoire == 7) {c = new Card(0,"Mirajane","Forme Démoniaque",80,null,0);}
-			else if (nombreAleatoire == 8) {c = new Card(0,"Kagura","Neo Armstrong Cyclone Jet",250,null,0);}
-			else if (nombreAleatoire == 9) {c = new Card(0, "Meriodasu", "Full counter", 60,null,0);}
-			else {c = new Card(0, "Pain", "Shinra Tensei" , 110, null,0);}
-	        addCard(c);
+			if (nombreAleatoire == 0) {c = new Card(0,"San Goku","KAMEHAMEHA!","Dragon Ball",300,100,40,80,"./images/sangoku.webp",40,0);}
+			else if (nombreAleatoire == 1) {c = new Card(0,"Saitama","Série de coups sérieux","One Punch Man",300,20,60,200,"./images/saitama.jpg",90,0);}
+			else if (nombreAleatoire == 2) {c = new Card(0,"Ener","El Thor","One Piece",300,70,30,110,"./images/ener.png",70,0);}
+			else if (nombreAleatoire == 3) {c = new Card(0,"Midorya","Texas Smash","My Hero Academia",200,70,10,90,"./images/midoriya.png",60,0);}
+			else if (nombreAleatoire == 4) {c = new Card(0,"Hero","Gigantaille","Dragon Quest",100,100,10,60,"./images/hero.jpeg",30,0);}
+			else if (nombreAleatoire == 5) {c = new Card(0,"Magicarpe","Trempette","Pokemon",10,1000,0,0,"./images/magicarpe.jpg",10,0);}
+			else if (nombreAleatoire == 6) {c = new Card(0,"Griffith","Eclipse","Berserk",200,10,200,400,"./images/griffith.webp",120,0);}
+			else if (nombreAleatoire == 7) {c = new Card(0,"Mirajane","Forme Démoniaque","Fairy Tail",200,80,50,80,"./images/mirajane.webp",50,0);}
+			else if (nombreAleatoire == 8) {c = new Card(0,"Kagura","Neo Armstrong Cyclone Jet","Gintama",500,50,0,250,"./images/kagura.webp",100,0);}
+			else if (nombreAleatoire == 9) {c = new Card(0, "Meliodas", "Full counter","Seven Deadly Sins",300,100,30,60,"./images/meliodas.jpg",50,0);}
+			else if (nombreAleatoire == 10){c = new Card(0, "Pain","Shinra Tensei","Naruto",200,60,20,110, "./images/pain.png",70,0);}
+			else {c = new Card(0,"Dio","Za Warudo","Jojo's Bizarre Adventure",500,100,100,100,"./images/dio.jpeg",500,0);} 
+			addCard(c);
 	        nombreAleatoire = rand.nextInt(12);
 			i++;
 		}
