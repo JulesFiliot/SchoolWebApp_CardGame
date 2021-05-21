@@ -12,7 +12,7 @@ function generate(){
 
 function callback(response){
 	document.getElementById("userName").innerHTML = response.name;
-    document.getElementById("currentMoney").innerHTML = "Current money : " + response.money + "€";
+    document.getElementById("currentMoney").innerHTML = "Balance : " + response.money + "$";
 }
 
 function err_callback(error){
