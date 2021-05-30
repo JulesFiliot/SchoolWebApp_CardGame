@@ -107,12 +107,12 @@ public class UserService {
  	}
 
      public void signIn(String username, String password) {
-    	 User u= new User(username,password);
+    	 User u = new User(username,password);
     	// addUser(u); 	 
      }
      
      public void cardBought(String id) {
-    	 User u =getUser(Integer.parseInt(id));
+    	 User u = getUser(Integer.parseInt(id));
     	 u.setMoney(getUser(Integer.parseInt(id)).getMoney()-50);
     	 uRepository.save(u);
      }
