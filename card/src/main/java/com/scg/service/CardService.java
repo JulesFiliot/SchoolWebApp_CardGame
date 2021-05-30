@@ -140,4 +140,16 @@ public class CardService {
 			i++;
 		}
 	}
+
+	public void generateCards(String id) {
+		int cpt = 0;
+		Iterable<Card> allCards =cRepository.findAll();
+		Iterator<Card> iterator = allCards.iterator();
+		while(iterator.hasNext() && cpt < 5 ) {
+		    Card it = iterator.next();
+		    it.setOwnerId(Integer.parseInt(id));
+		    cRepository.save(it);
+		    cpt++;
+		}		
+	}
 }
