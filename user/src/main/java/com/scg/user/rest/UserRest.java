@@ -45,9 +45,11 @@ public class UserRest {
     @RequestMapping(method=RequestMethod.POST,value="/user")
     public void addUser(@RequestBody User user) {
         uService.addUser(user);
-        String reqCard = "http://127.0.0.1:8081/generateCards/"+user.getId();
-        RestTemplate restTemplate = new RestTemplate();
-		restTemplate.getForEntity(reqCard, Object[].class);
+        
+        //String reqCard = "http://127.0.0.1:8081/generateCards/"+user.getId();
+        //RestTemplate restTemplate = new RestTemplate();
+		//restTemplate.getForEntity(reqCard, Object[].class);
+		
 		//Object[] objects = responseEntity.getBody();
 		//MediaType contentType = responseEntity.getHeaders().getContentType();
 		//HttpStatus statusCode = responseEntity.getStatusCode();
