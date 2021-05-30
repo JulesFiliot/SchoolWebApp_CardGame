@@ -5,11 +5,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sp.model.Card;
-import com.sp.model.User;
-import com.sp.service.CardService;
-import com.sp.service.UserService;
-
 /*
 import com.scg.user.service.UserService;
 import com.scg.model.Card;
