@@ -2,6 +2,7 @@ package com.scg.user.rest;
 
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -9,14 +10,17 @@ import java.util.Optional;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.scg.user.model.User;
@@ -26,10 +30,17 @@ import com.scg.user.service.UserService;
 public class UserRest {
     @Autowired
     UserService uService;
-    /*
-    @RequestMapping(method=RequestMethod.POST,value="/user")
-    public void addUser(@RequestBody User user) {
+    
+    @RequestMapping(method=RequestMethod.POST,value="/addUser")
+    public void addUser(@RequestBody User user,HttpServletResponse response) {
         uService.addUser(user);
+        String reqCard = "http://127.0.0.1:8081/generateCards/"+user.getId();
+        RestTemplate restTemplate = new RestTemplate();
+		restTemplate.getForEntity(reqCard, Object[].class);
+		//Object[] objects = responseEntity.getBody();
+		//MediaType contentType = responseEntity.getHeaders().getContentType();
+		//HttpStatus statusCode = responseEntity.getStatusCode();
+
     }
     
     @RequestMapping(method=RequestMethod.GET,value="/user/{id}")
@@ -61,13 +72,5 @@ public class UserRest {
     	return users;
     }
     
-    @RequestMapping(value="/hud")
-    public ModelAndView hud(@CookieValue(value = "id", defaultValue = "0") String id) {
-		  ModelAndView modelAndView = new ModelAndView();
-	      modelAndView.addObject("userName", getUser(id).getName());
-	      modelAndView.addObject("userMoney",getUser(id).getMoney()+"$");
-		  modelAndView.setViewName("hud");
-		  return modelAndView; 
-    }*/
     
 }
