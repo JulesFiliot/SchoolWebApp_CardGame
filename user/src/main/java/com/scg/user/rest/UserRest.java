@@ -1,7 +1,5 @@
 package com.scg.user.rest;
 
-
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -19,13 +17,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.scg.user.model.User;
 import com.scg.user.service.UserService;
 
 @RestController
 public class UserRest {
     @Autowired
     UserService uService;
+    
+    //Return user's id given his password and username
+    @RequestMapping(method = RequestMethod.POST, value="/getUserId")
+    public int checkUser(@RequestBody String username, String pwd) {
+    	int ret = 0;
+    	ret = uService.checkUser(username, pwd);
+    	return ret;
+    }
+    
     /*
     @RequestMapping(method=RequestMethod.POST,value="/user")
     public void addUser(@RequestBody User user) {
