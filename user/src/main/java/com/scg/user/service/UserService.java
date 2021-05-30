@@ -34,6 +34,10 @@ public class UserService {
 		User createdUser=uRepository.save(u);
 		System.out.println(createdUser);
 		
+        String reqCard = "http://127.0.0.1:8081/generateCards/"+u.getId();
+        RestTemplate restTemplate = new RestTemplate();
+		restTemplate.getForEntity(reqCard, Object[].class);
+		
 		/*RestTemplate restTemplate = new RestTemplate();
 		String urlReq
 		  = "http://localhost:8080/spring-rest/foos";
@@ -126,9 +130,10 @@ public class UserService {
 		return ListUser;
  	}
 
-     public void signIn(String username, String password) {
-    	 User u = new User(username,password);
-    	// addUser(u); 	 
+     public void signIn(User u) {
+//    	 User u = new User(u);
+    	 if (u.getMoney()==0) {u.setMoney(500);}
+    	 addUser(u); 	 
      }
      
      public void cardBought(String id) {

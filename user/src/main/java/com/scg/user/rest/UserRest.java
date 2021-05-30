@@ -35,19 +35,42 @@ public class UserRest {
 
     //Return user's id given his password and username
     @RequestMapping(method = RequestMethod.POST, value="/getUserId")
-    public int checkUser(@RequestBody String username, String pwd) {
+    public int checkUser(@RequestBody User u) {
     	int ret = 0;
-    	ret = uService.checkUser(username, pwd);
+    	ret = uService.checkUser(u.getName(), u.getPassword());
     	return ret;
     }
     
     
+    @RequestMapping(method = RequestMethod.POST, value="/getCurrentUserMoney")
+    public int getUserMoney(@CookieValue(value = "id", defaultValue = "0") String id) {
+    	User u = uService.getUser(Integer.parseInt(id));
+    	if (u!=null) {
+    		return u.getMoney();
+    	}
+    	else { return 0;}
+    }
+    
+    @RequestMapping(value="/setCurrentUserMoney")
+    public boolean setCurrentUserMoney(@CookieValue(value = "id", defaultValue = "0") String id, @PathVariable String money) {
+    	User u = uService.getUser(Integer.parseInt(id));
+    	if (u!=null) {
+    		u.setMoney(Integer.parseInt(money));
+    		return true;
+    	}
+    	else {
+    		return false;}
+    	}
+     
+    
     @RequestMapping(method=RequestMethod.POST,value="/user")
     public void addUser(@RequestBody User user) {
         uService.addUser(user);
-        String reqCard = "http://127.0.0.1:8081/generateCards/"+user.getId();
-        RestTemplate restTemplate = new RestTemplate();
-		restTemplate.getForEntity(reqCard, Object[].class);
+        
+        //String reqCard = "http://127.0.0.1:8081/generateCards/"+user.getId();
+        //RestTemplate restTemplate = new RestTemplate();
+		//restTemplate.getForEntity(reqCard, Object[].class);
+		
 		//Object[] objects = responseEntity.getBody();
 		//MediaType contentType = responseEntity.getHeaders().getContentType();
 		//HttpStatus statusCode = responseEntity.getStatusCode();
@@ -71,6 +94,14 @@ public class UserRest {
         return;
     }
     
+    @RequestMapping(value="/signin")
+    public void signin(@RequestBody User u) {
+  	  
+        uService.signIn(u);
+        return;
+    }
+    
+    
     @RequestMapping(method=RequestMethod.GET,value="/username/{name}")
     public String namegetUser(@PathVariable String name) {
   	  String uname=uService.namegetUser(name);
@@ -83,6 +114,11 @@ public class UserRest {
     	return users;
     }
     
+ 
+    @RequestMapping(method=RequestMethod.GET,value="/readUserCookie")
+    public String readUserCookie(@CookieValue(value = "id", defaultValue = "0") String id) {
+    	return id;
+    }
     
 }
 
