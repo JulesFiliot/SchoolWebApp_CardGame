@@ -36,7 +36,7 @@ public class AuthRestCrt {
     	System.out.println(username);
     	System.out.println(password);
     	
-    	String reqUrl = "http://127.0.0.1:8081/getUserId";
+    	String reqUrl = "http://127.0.0.1:8080/getUserId";
         RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<Integer> reqId = restTemplate.getForEntity(reqUrl, Integer.class);
 		Integer id = reqId.getBody();
