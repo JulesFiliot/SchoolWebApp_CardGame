@@ -40,13 +40,13 @@ public class AuthRestCrt {
     	
     	String reqUrl = "http://127.0.0.1:8081/getUserId";
         RestTemplate restTemplate = new RestTemplate();
-		ResponseEntity<Object[]> id = restTemplate.getForEntity(reqUrl, Object[].class);
+		ResponseEntity<Integer> id = restTemplate.getForEntity(reqUrl, Integer.class);
     	
 		System.out.println(id);
 		
   	  //int id = uService.checkUser(username, password);
   	  
-  	 /* if (id!=0) {
+  	  if (id != 0) {
   		  Cookie cookie = new Cookie("id", String.valueOf(id));
 
   		  //add cookie to response
@@ -57,7 +57,7 @@ public class AuthRestCrt {
 				e.printStackTrace();
 			}
   		  return ;
-  		  }*/
+  		  }
 		return;
     }
     
@@ -75,6 +75,7 @@ public class AuthRestCrt {
 		  return;
     }
 
+    /* DELETE COMMENT
     @RequestMapping(value="/signin")
     public void signin(@RequestParam(name="username", required=false, defaultValue="") String username,@RequestParam(name="password", required=false, defaultValue="") String password,HttpServletResponse response) {
         if (!username.equals("") && !password.equals("")) {
@@ -88,7 +89,8 @@ public class AuthRestCrt {
         }
 
 		  return;
-    }
+    }*/
+    
     /*@RequestMapping("/consolecookie")
     public void consolecookie(HttpServletRequest req) {
   	  Optional<String> out=uService.readCookie(req, "id");
@@ -101,9 +103,9 @@ public class AuthRestCrt {
   //	    return "Hey! My id is " + id;
   //	}
     
-    
+    /* DELETE COMMENT
     @RequestMapping("/getCurrentUserId")
     public String readCookie(@CookieValue(value = "id", defaultValue = "0") String id) {
   	  return "The id of the current user is "+uService.readCookie(id);
-    }
+    } */
 }
