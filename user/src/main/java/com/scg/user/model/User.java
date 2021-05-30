@@ -16,7 +16,7 @@ public class User implements Serializable {
 	@GeneratedValue
 	private Integer id;
 	private String name;
-	private String address;
+	private String password;
 	private int money;
 	
 	public User() {
@@ -25,7 +25,7 @@ public class User implements Serializable {
 	public User(String name, String password) {
 		super();
 		this.name=name;
-		this.address=password;
+		this.password=password;
 		this.money = 500;
 		
 	}
@@ -34,7 +34,7 @@ public class User implements Serializable {
 		super();
 		this.id = id;
 		this.name = name;
-		this.address=password;
+		this.password=password;
 		this.money = money;
 	}
 
@@ -48,7 +48,7 @@ public class User implements Serializable {
 	}
 
 	public String getPassword() {
-		return address;
+		return password;
 	}
 	
 	public Integer getId() {
@@ -69,6 +69,6 @@ public class User implements Serializable {
 
 	@Override
 	public String toString() {
-		return "USER [" + this.id + "]: name:" + this.name + ", Bank account : " + this.money;
+		return "USER [" + this.id + "]: name:" + this.name +", password : "+ this.password +", Bank account : " + this.money;
 	}
 }
