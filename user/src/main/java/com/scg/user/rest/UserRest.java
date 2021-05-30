@@ -3,6 +3,7 @@ package com.scg.user.rest;
 
 
 import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -23,16 +24,26 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.scg.user.model.User;
 import com.scg.user.service.UserService;
+import com.scg.user.model.User;
 
 @RestController
 public class UserRest {
     @Autowired
     UserService uService;
     
-    @RequestMapping(method=RequestMethod.POST,value="/addUser")
-    public void addUser(@RequestBody User user,HttpServletResponse response) {
+
+    //Return user's id given his password and username
+    @RequestMapping(method = RequestMethod.POST, value="/getUserId")
+    public int checkUser(@RequestBody String username, String pwd) {
+    	int ret = 0;
+    	ret = uService.checkUser(username, pwd);
+    	return ret;
+    }
+    
+    
+    @RequestMapping(method=RequestMethod.POST,value="/user")
+    public void addUser(@RequestBody User user) {
         uService.addUser(user);
         String reqCard = "http://127.0.0.1:8081/generateCards/"+user.getId();
         RestTemplate restTemplate = new RestTemplate();
@@ -74,3 +85,4 @@ public class UserRest {
     
     
 }
+
