@@ -38,10 +38,9 @@ public class AuthRestCrt {
     	
     	String reqUrl = "http://127.0.0.1:8081/getUserId";
         RestTemplate restTemplate = new RestTemplate();
-		ResponseEntity<Integer> id = restTemplate.getForEntity(reqUrl, Integer.class);
-    	
-		System.out.println(id);
-		
+		ResponseEntity<Integer> reqId = restTemplate.getForEntity(reqUrl, Integer.class);
+		Integer id = reqId.getBody();
+		System.out.println(id);		
   	  //int id = uService.checkUser(username, password);
   	  
   	  if (id != 0) {
@@ -77,7 +76,8 @@ public class AuthRestCrt {
     @RequestMapping(value="/signin")
     public void signin(@RequestParam(name="username", required=false, defaultValue="") String username,@RequestParam(name="password", required=false, defaultValue="") String password,HttpServletResponse response) {
         if (!username.equals("") && !password.equals("")) {
-      	  uService.signIn(username, password);
+      	  uService.
+(username, password);
   		  try {
 				response.sendRedirect("index.html");
   		  } catch (IOException e) {
