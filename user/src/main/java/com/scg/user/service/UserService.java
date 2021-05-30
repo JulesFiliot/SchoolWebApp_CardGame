@@ -13,11 +13,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.client.RestTemplate;
 
 import com.scg.user.model.User;
 import com.scg.user.repository.*;
@@ -32,10 +34,28 @@ public class UserService {
 		User createdUser=uRepository.save(u);
 		System.out.println(createdUser);
 		
-		/*ResponseEntity<Object[]> responseEntity = restTemplate.getForEntity(urlGETList, Object[].class);
+		/*RestTemplate restTemplate = new RestTemplate();
+		String urlReq
+		  = "http://localhost:8080/spring-rest/foos";
+		
+		/*ResponseEntity<Object[]> responseEntity = restTemplate.getForEntity(urlReq, Object[].class);
 		Object[] objects = responseEntity.getBody();
 		MediaType contentType = responseEntity.getHeaders().getContentType();
-		HttpStatus statusCode = responseEntity.getStatusCode();
+		HttpStatus statusCode = responseEntity.getStatusCode();*/
+		
+		/*Object[] forNow = restTemplate.getForObject("URL", Object[].class);
+	    List<Object> lst = Arrays.asList(forNow);
+		
+	    Iterator<Object> iterator = lst .iterator();
+	    */
+		/*RestTemplate restTemplate = new RestTemplate();
+
+		HttpEntity<User> request = new HttpEntity<>(u);
+		User user = restTemplate.postForObject("http://127.0.0.1:8080/foos", request, User.class);
+		assertThat(user, notNullValue());
+		assertThat(user.getName(), is("bar"));*/
+	    
+	    
 		/*Iterable<Card> allCards = cRepository.findAll();
         Iterator<Card> iterator = allCards.iterator();
         int cpt = 0;
