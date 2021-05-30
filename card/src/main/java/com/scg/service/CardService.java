@@ -147,9 +147,11 @@ public class CardService {
 		Iterator<Card> iterator = allCards.iterator();
 		while(iterator.hasNext() && cpt < 5 ) {
 		    Card it = iterator.next();
-		    it.setOwnerId(Integer.parseInt(id));
-		    cRepository.save(it);
-		    cpt++;
+		    if (it.getOwnerId() == 0) {
+			    it.setOwnerId(Integer.parseInt(id));
+			    cRepository.save(it);
+			    cpt++;
+		    }
 		}		
 	}
 }
