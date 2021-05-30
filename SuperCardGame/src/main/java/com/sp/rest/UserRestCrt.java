@@ -65,14 +65,5 @@ import com.sp.model.User;
           User u=uService.getMyUser(id);
           return u;
       }
-      
-      @RequestMapping(value="/hud")
-      public ModelAndView hud(@CookieValue(value = "id", defaultValue = "0") String id) {
-		  ModelAndView modelAndView = new ModelAndView();
-	      modelAndView.addObject("userName", getUser(id).getName());
-	      modelAndView.addObject("userMoney",getUser(id).getMoney()+"$");
-		  modelAndView.setViewName("hud");
-		  return modelAndView; 
-      }
-      
+            
   }
