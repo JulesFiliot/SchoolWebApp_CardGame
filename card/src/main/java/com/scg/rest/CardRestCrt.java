@@ -31,6 +31,17 @@ public class CardRestCrt {
         return c;
     }
     
+    @RequestMapping(method=RequestMethod.GET,value="/priceCard/{cId}")
+    public boolean sellCard(@PathVariable String cId) {
+        boolean ret = cService.cardSold(cId);
+        return ret;
+    }
+    
+    @RequestMapping(method=RequestMethod.GET,value="/priceCard/{id}")
+    public int getCardPrice(@PathVariable String id) {
+        Card c=cService.getCard(Integer.valueOf(id));
+        return c.getPrice();
+    }
     //Affichage de liste des cartes
     /*@RequestMapping("/cardList")		
     public ModelAndView page (@CookieValue(value = "id", defaultValue = "0") String id) {
@@ -68,6 +79,18 @@ public class CardRestCrt {
     @RequestMapping(value="/generateCards/{id}")
     public void generateCards(@PathVariable String id) {
     	cService.generateCards(id);
+    	return;
+    }
+    
+    @RequestMapping(value="/setOwnerId/{cId}/{uId}")
+    public void setOwnerId(@PathVariable String cId, @PathVariable String uId) {
+    	cService.setOwnerId(cId,uId);
+    	return;
+    }
+    
+    @RequestMapping(value="/cardSold/{cId}")
+    public void soldCard(@PathVariable String cId) {
+    	cService.cardSold(cId);
     	return;
     }
 }
