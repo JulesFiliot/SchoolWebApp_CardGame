@@ -124,14 +124,19 @@ public class UserRest {
         if (!name.equals("") && !password.equals("")) {
           User u = new User(name,password);
       	  uService.signIn(u);
-	   	 // Cookie cookie = new Cookie("id", u.getId().toString());
-      	//  Cookie cookie = new Cookie("id", "2");
+
+      	  
+      	String reqUrl = "http://127.0.0.1:8083/setAuthId/" + u.getId().toString() ;
+        RestTemplate restTemplate = new RestTemplate();
+		restTemplate.getForEntity(reqUrl, Object[].class);
+		
+	   	  //Cookie cookie = new Cookie("id", u.getId().toString());
+      	//Cookie cookie = new Cookie("id", "2");
 	   	 // response.addCookie(cookie);
   		  try {
 
 				response.sendRedirect("http://127.0.0.1:8090/hub.html");
   		  } catch (IOException e) {
-				// TODO Auto-generated catch block
   			  	System.out.println("pas fonctionné");
 				e.printStackTrace();
   		  }
