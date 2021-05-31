@@ -1,10 +1,10 @@
-package com.scg.revproxy;
+package com.scg.reverseproxy;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class RevproxyApplicationTests {
+class ReverseproxyApplicationTests {
 
 	@Test
 	void contextLoads() {
