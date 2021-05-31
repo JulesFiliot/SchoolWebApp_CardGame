@@ -10,18 +10,26 @@ public class Auth {
 	@Id
 	@GeneratedValue
 	private Integer id;
-	private String name = "currentAuth";
+	private Integer uid;
+	private String name = "currentUser";
 	
-	public Auth(Integer id) {
+	public Auth() {
 		super();
-		this.id = id;
+		this.id=1;
+		this.uid=0;
+	}
+	
+	public Auth(Integer uid) {
+		super();
+		this.id = 1;
+		this.uid=uid;
 	}
 	
 	public Integer getId() {
-		return this.id;
+		return this.uid;
 	}
 	
 	public void setId(Integer id) {
-		this.id = id;
+		this.uid = id;
 	}
 }
