@@ -121,7 +121,7 @@ public class UserService {
  	}
 
      public void signIn(String username, String password) {
-    	 User u= new User(username,password);
+    	 User u= new User(0,username,password,500);
     	 addUser(u); 	 
      }
      
