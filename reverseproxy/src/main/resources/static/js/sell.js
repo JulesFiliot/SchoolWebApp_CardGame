@@ -2,7 +2,7 @@
 
 //fetch all cards of connected user
 function fetch_cards() {
-    const GET_CARDS_URL="http://127.0.0.1:8080/mycards"; 
+    const GET_CARDS_URL="http://127.0.0.1:8090/card/mycards"; 
     let context =   {
                         method: 'GET'
                     };
@@ -46,7 +46,7 @@ function replace_content() {
         let cardContainer= document.querySelector("#tableContent");
         cardContainer.appendChild(clone);
 
-    	document.getElementById("a").href = "./sellCard/" + card.id;
+    	document.getElementById("a").href = "http://127.0.0.1:8090/card/sellCard/" + card.id;
     	document.getElementById("a").id = "a" + card.id;
     
     }
@@ -56,7 +56,7 @@ function replace_content() {
 //fetch all cards of connected user
 function fetch_user() {
 
-    const GET_USER_URL="http://127.0.0.1:8080/infoUser"; 
+    const GET_USER_URL="http://127.0.0.1:8090/user/infoUser"; 
     let context =   {
                         method: 'GET'
                     };

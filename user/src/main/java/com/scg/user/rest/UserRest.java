@@ -120,7 +120,7 @@ public class UserRest {
           User u = new User(name,password);
       	  uService.signIn(u);
   		  try {
-				response.sendRedirect("index.html");
+				response.sendRedirect("http://127.0.0.1:8090/index.html");
   		  } catch (IOException e) {
 				// TODO Auto-generated catch block
   			  	System.out.println("pas fonctionné");
@@ -150,6 +150,12 @@ public class UserRest {
     @RequestMapping(method=RequestMethod.GET,value="/readUserCookie")
     public String readUserCookie(@CookieValue(value = "id", defaultValue = "0") String id) {
     	return id;
+    }
+    
+    @RequestMapping(method=RequestMethod.GET,value="/infoUser")
+    public User getMyUser(@CookieValue(value = "id", defaultValue = "0") String id) {
+        User u=uService.getUser(Integer.parseInt(id));
+        return u;
     }
     
 }
