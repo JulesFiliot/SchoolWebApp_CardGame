@@ -7,6 +7,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.scg.model.Card;
@@ -56,9 +58,14 @@ public class CardRestCrt {
         return modelAndView;
     }*/
     
-    @RequestMapping(method=RequestMethod.GET,value="/mycards")
-    public ArrayList<Card> getMyCards(@CookieValue(value = "id", defaultValue = "0") String id) {
-    	ArrayList<Card> cards = cService.getMyCards(id);
+    @RequestMapping(method=RequestMethod.GET, value="/mycards")
+    public ArrayList<Card> getMyCards() {
+    	String reqUrl = "http://127.0.0.1:8083/getAuthId";
+    	RestTemplate resttemplate = new RestTemplate();
+    	ResponseEntity<Integer> bodyId = resttemplate.getForEntity(reqUrl, Integer.class);
+    	Integer id = bodyId.getBody();
+    	
+    	ArrayList<Card> cards = cService.getMyCards(id.toString());
     	return cards;
     }
     
