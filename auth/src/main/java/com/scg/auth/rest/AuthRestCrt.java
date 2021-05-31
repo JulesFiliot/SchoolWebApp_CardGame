@@ -74,13 +74,15 @@ public class AuthRestCrt {
     }
     
     @RequestMapping("/logout")
-    public void logout(HttpServletResponse response) {
-		  Cookie cookie = new Cookie("id", "0");
+    public void logout(HttpServletResponse response, HttpServletRequest request) {
+		  //Cookie cookie = new Cookie("id", "0");
+		  Cookie c[]=request.getCookies(); 
+		  c[0].setValue("0");
+		  response.addCookie(c[0]);
 		  System.out.println("kiku");
-
-		  response.addCookie(cookie);
+		//  response.addCookie(cookie);
 		  try {
-				response.sendRedirect("index.html");
+				response.sendRedirect("http://127.0.0.1:8090/index.html");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -120,7 +122,12 @@ public class AuthRestCrt {
     }    
     
     @RequestMapping("/getCurrentUserId")
-    public String readCookie(@CookieValue(value = "id", defaultValue = "0") String id) {		
-		return "The id of the current user is " + id;
+    public String getCUID() {
+    	return "l'id unique contenu dans le auth repo";
+    	
     }
+    
+    /*public String readCookie(@CookieValue(value = "id", defaultValue = "0") String id) {		
+		return "The id of the current user is " + id;
+    }*/
 }
