@@ -34,21 +34,28 @@ public class AuthRestCrt {
 	AuthService aService;
     
     @RequestMapping(method=RequestMethod.POST,value="/login")
-    public void login (@RequestParam(name="name", required=false, defaultValue="") String name,@RequestParam(name="password", required=false, defaultValue="") String password,HttpServletResponse response) {
-    	    	
-    	System.out.println(name);
-    	System.out.println(password);
-    	
+    public void login (@RequestBody Map<String, String> repMap, HttpServletResponse response) {
+    	String name = "";
+		String password = "";
+		
+    	System.out.println(repMap);
+    	try {
+    		name = (String) repMap.get("name");
+    		password = (String) repMap.get("password");
+    	} finally {
+    	}
     	// request body parameters
     	Map<String, String> map = new HashMap<>();
     	map.put("name", name);
     	map.put("password", password);
-
+    	
+    	
     	String reqUrl = "http://127.0.0.1:8080/getUserId";
         RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<Integer> reqId = restTemplate.postForEntity(reqUrl, map,Integer.class);
 
 		Integer id = reqId.getBody();
+		
 		System.out.println(id);		
   	  //int id = uService.checkUser(username, password);
   	  
@@ -62,7 +69,7 @@ public class AuthRestCrt {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-  		  return ;
+  		  return;
   		  }
 		return;
     }
@@ -81,12 +88,11 @@ public class AuthRestCrt {
 		  return;
     }
 
-    /* DELETE COMMENT
-    @RequestMapping(value="/signin")
-    public void signin(@RequestParam(name="username", required=false, defaultValue="") String username,@RequestParam(name="password", required=false, defaultValue="") String password,HttpServletResponse response) {
+    
+    /*@RequestMapping(value="/signin")
+    public void signin(@RequestBody Map<String, String> repMap, HttpServletResponse response) {
         if (!username.equals("") && !password.equals("")) {
-      	  uService.
-(username, password);
+      	  uService.signin(username, password);
   		  try {
 				response.sendRedirect("index.html");
   		  } catch (IOException e) {
@@ -94,7 +100,6 @@ public class AuthRestCrt {
   		  }
   		  return;
         }
-
 		  return;
     }*/
     
