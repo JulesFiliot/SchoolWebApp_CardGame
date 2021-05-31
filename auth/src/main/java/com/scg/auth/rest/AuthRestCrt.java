@@ -63,7 +63,7 @@ public class AuthRestCrt {
   		  //add cookie to response
   		  response.addCookie(cookie);
   		  try {
-				response.sendRedirect("hub.html");
+				response.sendRedirect("http://127.0.0.1:8090/hub.html");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
