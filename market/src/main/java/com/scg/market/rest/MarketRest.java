@@ -23,15 +23,15 @@ import com.scg.market.service.MarketService;
 
 
 public class MarketRest {
-/*
+
 	@Autowired
     MarketService mService;
     
     
-    @RequestMapping("/buyCard/{cid}")
-    public void buyCard (@CookieValue(value = "id", defaultValue = "0") String id, @PathVariable String cid, HttpServletResponse response) {
-		  System.out.println("Je veux acheter la carte d'id "+cid);
-		  mService.buyCard(id, cid);
+    @RequestMapping("/buyCard/{cId}")
+    public void buyCard (@PathVariable String cId, HttpServletResponse response) {
+		  System.out.println("Je veux acheter la carte d'id "+cId);
+		  mService.buyCard(cId);
 		  try {
 			  response.sendRedirect("../buy.html");
 		  } catch (IOException e) {
@@ -39,7 +39,7 @@ public class MarketRest {
 			  e.printStackTrace();
 		  }
     }
-    
+/*
     @RequestMapping("/sellCard/{cid}")
     public void sellCard (@CookieValue(value = "id", defaultValue = "0") String id, @PathVariable String cid,HttpServletResponse response) {
 		  System.out.println("Je veux vendre la carte d'id "+cid);

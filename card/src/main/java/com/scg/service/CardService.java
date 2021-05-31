@@ -55,16 +55,6 @@ public class CardService {
 		
 		return ret;
 	}*/
-
-	public boolean cardBought(String id, String cid) {
-		Card c =getCard(Integer.parseInt(cid));
-		if (c!=null) {
-			c.setOwnerId(Integer.parseInt(id));
-			cRepository.save(c);	
-			return true;
-		}
-		return false;
-	}
 	
 	//Retourne la liste des cartes d'un utilisateur
 	public ArrayList<Card> getMyCards(String id) {
@@ -107,9 +97,9 @@ public class CardService {
 	}
 
 	public boolean cardSold(String cid) {
-		Card c =getCard(Integer.parseInt(cid));
-		if(c!=null) {
-			c.setOwnerId((Integer )0);
+		Card c = getCard(Integer.parseInt(cid));
+		if(c != null) {
+			c.setOwnerId((Integer) 0);
 			cRepository.save(c);
 			return true;
 		}
@@ -153,5 +143,11 @@ public class CardService {
 			    cpt++;
 		    }
 		}		
+	}
+
+	public void setOwnerId(String cId, String uId) {
+		Card c = getCard(Integer.parseInt(cId));
+		c.setOwnerId(Integer.parseInt(uId));
+		cRepository.save(c);
 	}
 }
