@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -150,6 +151,12 @@ public class UserRest {
     @RequestMapping(method=RequestMethod.GET,value="/readUserCookie")
     public String readUserCookie(@CookieValue(value = "id", defaultValue = "0") String id) {
     	return id;
+    }
+    
+    @RequestMapping(method=RequestMethod.GET,value="/infoUser")
+    public User getMyUser(@CookieValue(value = "id", defaultValue = "0") String id) {
+        User u=uService.getUser(Integer.valueOf(id));
+        return u;
     }
     
 }

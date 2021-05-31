@@ -2,7 +2,7 @@
 
 //fetch all cards of connected user
 function fetch_cards() {
-    const GET_CARDS_URL="http://127.0.0.1:8080/marketCards"; 
+    const GET_CARDS_URL="http://127.0.0.1:8082/marketCards"; 
     let context =   {
                         method: 'GET'
                     };
