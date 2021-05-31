@@ -55,7 +55,6 @@ public class AuthRestCrt {
 		Integer id = reqId.getBody();
 		
 		System.out.println(id);
-		
 		aService.setId(id);
 		
   	 /* if (id != 0) {
@@ -112,13 +111,21 @@ public class AuthRestCrt {
         	String reqUrl = "http://127.0.0.1:8080/signin";
             RestTemplate restTemplate = new RestTemplate();
     		restTemplate.postForEntity(reqUrl, map, Integer.class);
-
-  		  try {
+    		
+    		try {
+				response.sendRedirect("http://127.0.0.1:8090/index.html");
+  		  } catch (IOException e) {
+				// TODO Auto-generated catch block
+  			  	System.out.println("pas fonctionné");
+				e.printStackTrace();
+  		  }
+    		
+  		  /*try {
 				response.sendRedirect("index.html");
   		  } catch (IOException e) {
 				e.printStackTrace();
   		  }
-  		  return;
+  		  return;*/
         }
 		  return;
     }    
@@ -131,6 +138,13 @@ public class AuthRestCrt {
     @RequestMapping("/getAuthId")
     public Integer getCurrentUserIdRep() {
     	return aService.getAuthId();
+    }
+    
+    @RequestMapping("/setAuthId/{id}")
+    public void setAuthId(@PathVariable String id) {
+    	System.out.println(Integer.parseInt(id));
+    	aService.setId(Integer.parseInt(id));
+    	return;
     }
     
     

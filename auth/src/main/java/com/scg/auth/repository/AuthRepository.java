@@ -13,3 +13,4 @@ public interface AuthRepository extends CrudRepository<Auth,Integer>{
 		public List<Auth> findByName(String name);
 		
 }
+
