@@ -150,4 +150,9 @@ public class CardService {
 		c.setOwnerId(Integer.parseInt(uId));
 		cRepository.save(c);
 	}
+
+	public Integer getOwnerId(String cId) {
+		Card c = getCard(Integer.parseInt(cId));
+		return c.getOwnerId();
+	}
 }

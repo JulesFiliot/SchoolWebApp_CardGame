@@ -93,6 +93,11 @@ public class CardRestCrt {
     	return;
     }
     
+    @RequestMapping(value="/getOwnerId/{cId}")
+    public Integer getOwnerId(@PathVariable String cId) {
+    	return cService.getOwnerId(cId);
+    }
+    
     @RequestMapping(value="/cardSold/{cId}")
     public void soldCard(@PathVariable String cId) {
     	cService.cardSold(cId);
