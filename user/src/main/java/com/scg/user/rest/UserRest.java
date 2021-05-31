@@ -96,7 +96,6 @@ public class UserRest {
     
     @RequestMapping(method=RequestMethod.POST,value="/signin")
     public void signin(@RequestBody User u) {
-  	  
         uService.signIn(u);
         return;
     }
