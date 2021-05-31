@@ -28,35 +28,13 @@ public class MarketRest {
 	@Autowired
     MarketService mService;
     
-    @RequestMapping(method=RequestMethod.GET,value="/buyCard/{uId}/{cId}")
-    public void buyCard (@PathVariable String uId, @PathVariable String cId) {
-		  System.out.println("Je veux acheter la carte d'id "+cId);
+    @RequestMapping(method=RequestMethod.GET,value="/buyCard/{cId}")
+    public void buyCard (@CookieValue (value = "id", defaultValue = "0") String uId, @PathVariable String cId) {
 		  mService.buyCard(uId,cId);
     }
-    /*
-    @RequestMapping(method=RequestMethod.GET,value="/allcards")
-    public ArrayList<Card> getAllCards() {
-    	ArrayList<Card> cards = cService.getAllCards();
-    	return cards;
-    }
-*//*
-    @RequestMapping("/sellCard/{cid}")
-    public void sellCard (@CookieValue(value = "id", defaultValue = "0") String id, @PathVariable String cid,HttpServletResponse response) {
-		  System.out.println("Je veux vendre la carte d'id "+cid);
-		  mService.sellCard(id, cid);	
-		  try {
-			  response.sendRedirect("../sell.html");
-		  } catch (IOException e) {
-			  // TODO Auto-generated catch block
-			  e.printStackTrace();
-		}
-    }
     
-    @RequestMapping("/testU/{str}")
-    public void testU( @PathVariable String str) {
-  	  
-  	  mService.testU(str);
-    }
-	
-*/	
+    @RequestMapping(method=RequestMethod.GET,value="/sellCard/{cId}")
+    public void sellCard (@CookieValue(value = "id", defaultValue = "0") String uId, @PathVariable String cId) {
+		  mService.sellCard(uId, cId);	
+    }	
 }
