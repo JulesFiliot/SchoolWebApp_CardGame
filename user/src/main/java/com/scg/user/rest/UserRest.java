@@ -112,9 +112,8 @@ public class UserRest {
   		  }
   		  return;
         }
+    }
 
-		  return;
-        }
     
     
     @RequestMapping(method=RequestMethod.GET,value="/username/{name}")

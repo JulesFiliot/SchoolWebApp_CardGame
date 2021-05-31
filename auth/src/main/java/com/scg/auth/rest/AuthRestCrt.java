@@ -37,27 +37,21 @@ public class AuthRestCrt {
     public void login (@RequestBody Map<String, String> repMap, HttpServletResponse response) {
     	String name = "";
 		String password = "";
-		
-    	System.out.println(repMap);
+
     	try {
     		name = (String) repMap.get("name");
     		password = (String) repMap.get("password");
-    	} finally {
-    	}
+    	} finally {}
     	// request body parameters
     	Map<String, String> map = new HashMap<>();
     	map.put("name", name);
     	map.put("password", password);
-    	
     	
     	String reqUrl = "http://127.0.0.1:8080/getUserId";
         RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<Integer> reqId = restTemplate.postForEntity(reqUrl, map,Integer.class);
 
 		Integer id = reqId.getBody();
-		
-		System.out.println(id);		
-  	  //int id = uService.checkUser(username, password);
   	  
   	  if (id != 0) {
   		  Cookie cookie = new Cookie("id", String.valueOf(id));
@@ -89,10 +83,27 @@ public class AuthRestCrt {
     }
 
     
-    /*@RequestMapping(value="/signin")
+    @RequestMapping(value="/signin")
     public void signin(@RequestBody Map<String, String> repMap, HttpServletResponse response) {
-        if (!username.equals("") && !password.equals("")) {
-      	  uService.signin(username, password);
+        String username = "";
+        String password = "";
+        try {
+        	username = (String) repMap.get("name");
+    		password = (String) repMap.get("password");
+    	} finally {}
+    	
+    	if (!username.equals("") && !password.equals("")) {
+    		
+    		// request body parameters
+        	Map<String, String> map = new HashMap<>();
+        	map.put("name", username);
+        	map.put("password", password);
+        	
+        	//requesting signin
+        	String reqUrl = "http://127.0.0.1:8080/signin";
+            RestTemplate restTemplate = new RestTemplate();
+    		restTemplate.postForEntity(reqUrl, map, Integer.class);
+
   		  try {
 				response.sendRedirect("index.html");
   		  } catch (IOException e) {
@@ -101,7 +112,7 @@ public class AuthRestCrt {
   		  return;
         }
 		  return;
-    }*/
+    }
     
     /*@RequestMapping("/consolecookie")
     public void consolecookie(HttpServletRequest req) {
@@ -115,9 +126,14 @@ public class AuthRestCrt {
   //	    return "Hey! My id is " + id;
   //	}
     
-    /* DELETE COMMENT
+    
     @RequestMapping("/getCurrentUserId")
-    public String readCookie(@CookieValue(value = "id", defaultValue = "0") String id) {
-  	  return "The id of the current user is "+uService.readCookie(id);
-    } */
+    public String readCookie() {
+    	  	
+    	String reqUrl = "http://127.0.0.1:8080/readUserCookie";
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String> uId = restTemplate.getForEntity(reqUrl, String.class);
+		
+		return "The id of the current user is " + uId.getBody();
+    }
 }
