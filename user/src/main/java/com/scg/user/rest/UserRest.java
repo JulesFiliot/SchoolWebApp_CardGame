@@ -126,9 +126,9 @@ public class UserRest {
       	  uService.signIn(u);
 
       	  
-     // 	String reqUrl = "http://127.0.0.1:8083/setAuthId/" + u.getId().toString() ;
-      //  RestTemplate restTemplate = new RestTemplate();
-	//	restTemplate.getForEntity(reqUrl, Object[].class);
+      	String reqUrl = "http://127.0.0.1:8083/setAuthId/" + u.getId().toString() ;
+        RestTemplate restTemplate = new RestTemplate();
+		restTemplate.getForEntity(reqUrl, Object[].class);
 		
 	   	  //Cookie cookie = new Cookie("id", u.getId().toString());
       	//Cookie cookie = new Cookie("id", "2");
@@ -167,7 +167,15 @@ public class UserRest {
     }
     
     @RequestMapping(method=RequestMethod.GET,value="/infoUser")
-    public User getMyUser(@CookieValue(value = "id", defaultValue = "0") String id) {
+    public User getMyUser() {
+    	
+
+		//Integer id = reqId.getBody();
+		
+		String reqUrl2 = "http://127.0.0.1:8090/auth/getAuthId";
+        RestTemplate restTemplate2 = new RestTemplate();
+		ResponseEntity<Integer> req2 = restTemplate2.getForEntity(reqUrl2, Integer.class);
+		Integer id = req2.getBody(); 
         User u=uService.getUser(Integer.valueOf(id));
         return u;
     }

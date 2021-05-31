@@ -31,20 +31,32 @@ public class MarketRest {
     MarketService mService;
     
     @RequestMapping(method=RequestMethod.GET,value="/buyCard/{cId}")
-    public void buyCard (@PathVariable String cId) {
+    public void buyCard (@PathVariable String cId, HttpServletResponse response) {
     	String reqUrl = "http://127.0.0.1:8083/getAuthId";
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<Integer> bodyIu = restTemplate.getForEntity(reqUrl, Integer.class);
         Integer uId = bodyIu.getBody();
     	mService.buyCard(uId.toString(),cId);
+    	
+		try {
+			response.sendRedirect("http://127.0.0.1:8090/buy.html");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     }
     
     @RequestMapping(method=RequestMethod.GET,value="/sellCard/{cId}")
-    public void sellCard (@PathVariable String cId) {
+    public void sellCard (@PathVariable String cId,HttpServletResponse response) {
     	String reqUrl = "http://127.0.0.1:8083/getAuthId";
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<Integer> bodyIu = restTemplate.getForEntity(reqUrl, Integer.class);
         Integer uId = bodyIu.getBody();
 		mService.sellCard(uId.toString(), cId);	
+		
+		try {
+			response.sendRedirect("http://127.0.0.1:8090/sell.html");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     }	
 }
