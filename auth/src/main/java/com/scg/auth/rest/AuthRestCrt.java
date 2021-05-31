@@ -34,7 +34,8 @@ public class AuthRestCrt {
 	AuthService aService;
     
     @RequestMapping(method=RequestMethod.POST,value="/login")
-    public void login (@RequestBody Map<String, String> repMap, HttpServletResponse response) {
+    public void login (, HttpServletResponse response) {
+    	//PARAM 1 : @RequestParam Map<String, String> repMap
     	String name = "";
 		String password = "";
 
@@ -42,6 +43,9 @@ public class AuthRestCrt {
     		name = (String) repMap.get("name");
     		password = (String) repMap.get("password");
     	} finally {}
+    	System.out.println(name);
+    	System.out.println(password);
+    	
     	// request body parameters
     	Map<String, String> map = new HashMap<>();
     	map.put("name", name);
