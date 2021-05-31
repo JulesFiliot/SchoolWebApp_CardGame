@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -98,11 +99,20 @@ public class UserRest {
     }
     
     @RequestMapping(method=RequestMethod.POST,value="/signin")
-    public void signin(@RequestBody User u) {
-  	  
-        uService.signIn(u);
-        return;
-    }
+    public void signin(@RequestBody User u, HttpServletResponse response) {
+        if (!u.getName().equals("") && !u.getPassword().equals("")) {
+            uService.signIn(u);
+  		  try {
+				response.sendRedirect("index.html");
+  		  } catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+  		  }
+  		  return;
+        }
+
+		  return;
+        }
     
     
     @RequestMapping(method=RequestMethod.GET,value="/username/{name}")
