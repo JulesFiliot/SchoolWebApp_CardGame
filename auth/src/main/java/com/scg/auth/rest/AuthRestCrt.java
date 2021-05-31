@@ -130,17 +130,17 @@ public class AuthRestCrt {
 		  return;
     }    
     
-    @RequestMapping("/init")
+    @RequestMapping(value="/init")
     public void init() {
     	aService.init();
     }
 
-    @RequestMapping("/getAuthId")
+    @RequestMapping(value="/getAuthId")
     public Integer getCurrentUserIdRep() {
     	return aService.getAuthId();
     }
     
-    @RequestMapping("/setAuthId/{id}")
+    @RequestMapping(value="/setAuthId/{id}")
     public void setAuthId(@PathVariable String id) {
     	System.out.println(Integer.parseInt(id));
     	aService.setId(Integer.parseInt(id));
