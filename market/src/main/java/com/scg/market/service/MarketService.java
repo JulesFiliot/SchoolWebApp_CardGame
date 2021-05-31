@@ -53,7 +53,7 @@ public class MarketService {
 		restTemplate.getForEntity(reqUrl, Object[].class);
 		}
 
-	}
+
 /*	
 	public void testU(String str) {
 		System.out.println(uService.namegetUser(str));
