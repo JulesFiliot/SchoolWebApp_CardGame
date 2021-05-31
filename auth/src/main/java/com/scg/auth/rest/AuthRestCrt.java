@@ -49,15 +49,15 @@ public class AuthRestCrt {
     	map.put("name", name);
     	map.put("password", password);
     	
-  //  	String reqUrl = "http://127.0.0.1:8080/getUserId";
-    //    RestTemplate restTemplate = new RestTemplate();
-//		ResponseEntity<Integer> reqId = restTemplate.postForEntity(reqUrl, map,Integer.class);
-//		Integer id = reqId.getBody();
+    	String reqUrl = "http://127.0.0.1:8080/getUserId";
+        RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<Integer> reqId = restTemplate.postForEntity(reqUrl, map,Integer.class);
+		Integer id = reqId.getBody();
 		
-//		System.out.println(id);
-//		aService.setId(id);
+		System.out.println(id);
+		aService.setId(id);
 		
-		/*try {
+		try {
 			response.sendRedirect("http://127.0.0.1:8090/hub.html");
 		} catch (IOException e) {
 			e.printStackTrace();
