@@ -56,7 +56,9 @@ public class AuthRestCrt {
 		
 		System.out.println(id);
 		
-  	  if (id != 0) {
+		aService.setId(id);
+		
+  	 /* if (id != 0) {
   		  Cookie cookie = new Cookie("id", String.valueOf(id));
 
   		  //add cookie to response
@@ -68,14 +70,14 @@ public class AuthRestCrt {
 			}
   		  System.out.println(cookie);
   		  return;
-  		  }
+  		  }*/
   	  	return;
     }
     
     @RequestMapping("/logout")
     public void logout(HttpServletResponse response, HttpServletRequest request) {
 		  //Cookie cookie = new Cookie("id", "0");
-		  Cookie c[]=request.getCookies(); 
+		  /*Cookie c[]=request.getCookies(); 
 		  c[0].setValue("0");
 		  response.addCookie(c[0]);
 		  System.out.println("kiku");
@@ -84,8 +86,9 @@ public class AuthRestCrt {
 				response.sendRedirect("http://127.0.0.1:8090/index.html");
 			} catch (IOException e) {
 				e.printStackTrace();
-			}
-		  return;
+			}*/
+    	aService.setId(0);
+		return;
     }
     
     //Pas utilisé, signin géré par UserRest
@@ -120,11 +123,17 @@ public class AuthRestCrt {
 		  return;
     }    
     
+    @RequestMapping("/init")
+    public void init() {
+    	aService.init();
+    }
 
     @RequestMapping("/getAuthId")
     public Integer getCurrentUserIdRep() {
     	return aService.getAuthId();
     }
+    
+    
     /*public String readCookie(@CookieValue(value = "id", defaultValue = "0") String id) {		
 		return "The id of the current user is " + id;
     }*/
