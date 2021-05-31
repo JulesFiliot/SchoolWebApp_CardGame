@@ -55,19 +55,22 @@ public class AuthRestCrt {
 		ResponseEntity<Integer> reqId = restTemplate.postForEntity(reqUrl, map,Integer.class);
 		Integer id = reqId.getBody();
 		
+		System.out.println(id);
+		
   	  if (id != 0) {
   		  Cookie cookie = new Cookie("id", String.valueOf(id));
 
   		  //add cookie to response
   		  response.addCookie(cookie);
   		  try {
-				response.sendRedirect("hub.html");
+				response.sendRedirect("http://127.0.0.1:8090/hub.html");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+  		  System.out.println(cookie);
   		  return;
   		  }
-		return;
+  	  	return;
     }
     
     @RequestMapping("/logout")
