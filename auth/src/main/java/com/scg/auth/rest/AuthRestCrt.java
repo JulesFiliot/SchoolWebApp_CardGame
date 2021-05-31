@@ -34,14 +34,17 @@ public class AuthRestCrt {
 	AuthService aService;
     
     @RequestMapping(method=RequestMethod.POST,value="/login")
-    public void login (@RequestBody Map<String, String> repMap, HttpServletResponse response) {
+    public void login (@RequestParam Map<String, String> repMap, HttpServletResponse response) {
+    	//BACKUP PARAM 1 : @RequestParam(name="name", required=false, defaultValue="") String name,@RequestParam(name="password", required=false, defaultValue="") String password
     	String name = "";
 		String password = "";
+		
 
     	try {
     		name = (String) repMap.get("name");
     		password = (String) repMap.get("password");
     	} finally {}
+    	
     	// request body parameters
     	Map<String, String> map = new HashMap<>();
     	map.put("name", name);
@@ -50,9 +53,8 @@ public class AuthRestCrt {
     	String reqUrl = "http://127.0.0.1:8080/getUserId";
         RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<Integer> reqId = restTemplate.postForEntity(reqUrl, map,Integer.class);
-
 		Integer id = reqId.getBody();
-  	  
+		
   	  if (id != 0) {
   		  Cookie cookie = new Cookie("id", String.valueOf(id));
 
@@ -81,8 +83,8 @@ public class AuthRestCrt {
 			}
 		  return;
     }
-
     
+    //Pas utilisé, signin géré par UserRest
     @RequestMapping(value="/signin")
     public void signin(@RequestBody Map<String, String> repMap, HttpServletResponse response) {
         String username = "";
@@ -112,20 +114,7 @@ public class AuthRestCrt {
   		  return;
         }
 		  return;
-    }
-    
-    /*@RequestMapping("/consolecookie")
-    public void consolecookie(HttpServletRequest req) {
-  	  Optional<String> out=uService.readCookie(req, "id");
-  	  System.out.println(out);
-  	  return;
-    }*/
-    
-   // @RequestMapping("/readCookie")
-   // public String readCookie(@CookieValue(value = "id", defaultValue = "0") String id) {
-  //	    return "Hey! My id is " + id;
-  //	}
-    
+    }    
     
     @RequestMapping("/getCurrentUserId")
     public String readCookie(@CookieValue(value = "id", defaultValue = "0") String id) {		
