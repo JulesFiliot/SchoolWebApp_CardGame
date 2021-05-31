@@ -5,31 +5,36 @@ import java.util.Iterator;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.scg.play.model.Play;
 import com.scg.play.repository.PlayRepository;
 
 
+@Service
 public class PlayService {
-
+	
+	/*
 	@Autowired
-	PlayRepository pRepository;
+	public PlayRepository pRepository;
+	*/
+	
+	private final PlayRepository pRepository;
+	
+	public PlayService(PlayRepository pRepository) {
+		this.pRepository = pRepository;
+	}
 	
 	
 	public void newPlay() {
-		Play p = new Play("Roomain", 100);
-		pRepository.save(p);
+		Play p = new Play(0, "Roomain", 100);
+		addPlay(p);
 	}
 	
 	public void addPlay(Play p) {
 		Play createdPlay = pRepository.save(p);
 		System.out.println(createdPlay);
-		/*
-        String reqCard = "http://127.0.0.1:8081/generateCards/"+u.getId();
-        RestTemplate restTemplate = new RestTemplate();
-		restTemplate.getForEntity(reqCard, Object[].class);
-		*/	
 	}
 	
 	public Play getPlay(int id) {
@@ -51,5 +56,10 @@ public class PlayService {
 		}
 		return ListPlay;
  	}
+	
+	public void addP1(int idP, int idU) {
+		Play p = getPlay(idP);
+		p.setIdP1(idU);
+	}
 	
 }

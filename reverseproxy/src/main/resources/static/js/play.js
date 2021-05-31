@@ -3,6 +3,7 @@
 //fetch all cards of connected user
 function fetch_play() {
     const GET_PLAY_URL="http://127.0.0.1:8084/allPlay"; 
+    alert(GET_PLAY_URL);
     let context =   {
                         method: 'GET'
                     };
@@ -25,9 +26,10 @@ function playList_callback(reponse) {
 }
 
 function replace_content() {
+		alert("ok");
     let template = document.querySelector("#row");
     
-    for(const card of playList){
+    for(const play of playList){
         console.log(play);
         let clone = document.importNode(template.content, true);
 
@@ -71,8 +73,9 @@ function user_callback(reponse) {
 
 // --- CODE ---
 
-let cardList = [];
+let playList = [];
 document.addEventListener("DOMContentLoaded", function() {
-  fetch_cards();
+	console.log("In JavaScript !");
+  fetch_play();
   fetch_user();
 });

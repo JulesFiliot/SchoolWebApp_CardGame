@@ -16,8 +16,12 @@ public class Play {
 	private int IdP2;
 	
 	
-	public Play(String name, Integer pari) {
+	public Play() {
+	}
+	
+	public Play(int id, String name, int pari) {
 		super();
+		this.id = id;
 		this.name = name;
 		this.pari = pari;
 		this.IdP1 = 0;
@@ -49,5 +53,29 @@ public class Play {
 	
 	public void setPari(int pari) {
 		this.pari = pari;
+	}
+	
+	
+	public Integer getIdP1() {
+		return IdP1;
+	}
+
+	public void setIdP1(Integer IdP1) {
+		this.IdP1 = IdP1;
+	}
+	
+	
+	public Integer getIdP2() {
+		return IdP2;
+	}
+
+	public void setIdP2(Integer IdP2) {
+		this.IdP2 = IdP2;
+	}
+	
+	
+	@Override
+	public String toString() {
+		return "Play ["+this.id+"]: name:"+this.name+", pari:"+this.pari;
 	}
 }

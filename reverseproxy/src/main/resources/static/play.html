@@ -23,9 +23,17 @@
                 </div>
                 </a>
             </h3>
+            
+            <h3 class="ui left floated header">
+                <div class="content">
+                    PLAY
+                    <div class="sub header">Choose a room to play</div>
+                </div>
+            </h3>
         </div>
 
-
+		<a href = "./newRoom.html" class="button">Create Room</a>
+		<br/>
         <div class="ui grid">
             <div class="ten wide column">
                <!--  <h3 class="ui center aligned header"> My Card List</h3> -->
@@ -46,9 +54,6 @@
                         <template id="row">
                         	
                              <tr>
-                                <td>
-                                    <img class="ui avatar image" src={{img_src}}> <span>{{name}}</span>
-                                </td>
                                 <td>{{name}}</td>
                                 <td>{{user}}</td>
                                 <td>{{pari}}$</td>
@@ -71,7 +76,7 @@
 
         <script src="../lib/jquery-3.3.1.min.js"></script>
         <script src="../lib/Semantic-UI-CSS-master/semantic.js"></script>
-        <script src="../js/play.js"></script>
+        <script src="./js/play.js"></script>
         
         <!-- <script>
             $(function(){
