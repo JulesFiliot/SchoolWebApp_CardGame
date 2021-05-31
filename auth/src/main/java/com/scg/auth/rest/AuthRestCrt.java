@@ -28,8 +28,7 @@ import com.scg.auth.service.AuthService;
 
 @RestController
 public class AuthRestCrt {
-	//@Autowired
-    //UserService uService;
+
 	@Autowired
 	AuthService aService;
     
@@ -122,5 +121,10 @@ public class AuthRestCrt {
     @RequestMapping("/getCurrentUserId")
     public String readCookie(@CookieValue(value = "id", defaultValue = "0") String id) {		
 		return "The id of the current user is " + id;
+    }
+    
+    @RequestMapping("/getAuthId")
+    public Integer getCurrentUserIdRep() {
+    	return aService.getAuthId();
     }
 }
