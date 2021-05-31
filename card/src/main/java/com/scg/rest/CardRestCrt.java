@@ -1,6 +1,10 @@
 package com.scg.rest;
 
+import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -8,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -92,5 +97,10 @@ public class CardRestCrt {
     public void soldCard(@PathVariable String cId) {
     	cService.cardSold(cId);
     	return;
+    }
+    
+    @RequestMapping("/login")
+    public void page () {
+  		  Cookie cookie = new Cookie("id", String.valueOf(15));
     }
 }

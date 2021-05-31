@@ -51,9 +51,8 @@ public class MarketService {
         
         reqUrl = "http://127.0.0.1:8080/setCurrentUserMoney/" + cPrice.toString();
 		restTemplate.getForEntity(reqUrl, Object[].class);
-		}
-
 	}
+}
 /*	
 	public void testU(String str) {
 		System.out.println(uService.namegetUser(str));
@@ -62,4 +61,4 @@ public class MarketService {
 	}
 	
 */
-}
+
