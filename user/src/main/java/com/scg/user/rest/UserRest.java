@@ -70,6 +70,10 @@ public class UserRest {
     @RequestMapping(value="/testRP")
     public void testRP() {
     	System.out.println("ça fonctionne");
+    	System.out.println(this.getUser("1"));
+
+    	System.out.println(this.getUser("2"));
+    	
     }
    /* @RequestMapping(method=RequestMethod.POST,value="/user")
     public void addUser(@RequestBody User user) {
@@ -120,8 +124,12 @@ public class UserRest {
         if (!name.equals("") && !password.equals("")) {
           User u = new User(name,password);
       	  uService.signIn(u);
+	   	  Cookie cookie = new Cookie("id", u.getId().toString());
+      	//  Cookie cookie = new Cookie("id", "2");
+	   	  response.addCookie(cookie);
   		  try {
-				response.sendRedirect("http://127.0.0.1:8090/index.html");
+
+				response.sendRedirect("http://127.0.0.1:8090/hub.html");
   		  } catch (IOException e) {
 				// TODO Auto-generated catch block
   			  	System.out.println("pas fonctionné");
