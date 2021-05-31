@@ -37,44 +37,6 @@ public class UserService {
         String reqCard = "http://127.0.0.1:8081/generateCards/"+u.getId();
         RestTemplate restTemplate = new RestTemplate();
 		restTemplate.getForEntity(reqCard, Object[].class);
-		
-		/*RestTemplate restTemplate = new RestTemplate();
-		String urlReq
-		  = "http://localhost:8080/spring-rest/foos";
-		
-		/*ResponseEntity<Object[]> responseEntity = restTemplate.getForEntity(urlReq, Object[].class);
-		Object[] objects = responseEntity.getBody();
-		MediaType contentType = responseEntity.getHeaders().getContentType();
-		HttpStatus statusCode = responseEntity.getStatusCode();*/
-		
-		/*Object[] forNow = restTemplate.getForObject("URL", Object[].class);
-	    List<Object> lst = Arrays.asList(forNow);
-		
-	    Iterator<Object> iterator = lst .iterator();
-	    */
-		/*RestTemplate restTemplate = new RestTemplate();
-
-		HttpEntity<User> request = new HttpEntity<>(u);
-		User user = restTemplate.postForObject("http://127.0.0.1:8080/foos", request, User.class);
-		assertThat(user, notNullValue());
-		assertThat(user.getName(), is("bar"));*/
-	    
-	    
-		/*Iterable<Card> allCards = cRepository.findAll();
-        Iterator<Card> iterator = allCards.iterator();
-        int cpt = 0;
-        while(cpt < 5) {
-        	if (!iterator.hasNext()) {
-        		cService.createAllCards();
-        		allCards = cRepository.findAll();
-                iterator = allCards.iterator();
-        	}           Card c = iterator.next();
-           if (c.getOwnerId() == 0) {
-        	   c.setOwnerId(createdUser.getId());
-        	   cpt++;
-        	   cRepository.save(c);
-           }
-        }*/
 	}
 	
 	public User getUser(int id) {

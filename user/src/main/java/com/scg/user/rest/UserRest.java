@@ -64,8 +64,11 @@ public class UserRest {
     		return false;}
     	}
      
-    
-    @RequestMapping(method=RequestMethod.POST,value="/user")
+    @RequestMapping(value="/testRP")
+    public void testRP() {
+    	System.out.println("ça fonctionne");
+    }
+   /* @RequestMapping(method=RequestMethod.POST,value="/user")
     public void addUser(@RequestBody User user) {
         uService.addUser(user);
         
@@ -77,7 +80,7 @@ public class UserRest {
 		//MediaType contentType = responseEntity.getHeaders().getContentType();
 		//HttpStatus statusCode = responseEntity.getStatusCode();
 
-    }
+    }*/
     
     @RequestMapping(method=RequestMethod.GET,value="/user/{id}")
     public User getUser(@PathVariable String id) {
