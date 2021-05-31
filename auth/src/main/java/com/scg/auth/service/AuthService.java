@@ -20,7 +20,34 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.client.RestTemplate;
 
+import com.scg.auth.model.Auth;
+import com.scg.auth.repository.AuthRepository;
+
+
 @Service
 public class AuthService {
+	
+	@Autowired
+	AuthRepository aRepository;
+	
+	public Integer getAuthId() {
+		Iterable<Auth> Auth =aRepository.findAll();
+		Iterator<Auth> iterator = Auth.iterator();
+		Auth a = iterator.next();
+		return a.getId();
+	}
+	
+	public void setId(Integer id) {
+		Iterable<Auth> Auth =aRepository.findAll();
+		Iterator<Auth> iterator = Auth.iterator();
+		Auth a = iterator.next();
+		a.setId(id);
+		aRepository.save(a);
+	}
+
+	public void init() {
+		Auth a = new Auth(0);
+		aRepository.save(a);
+	}
 
 }

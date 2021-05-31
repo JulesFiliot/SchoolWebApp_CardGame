@@ -29,7 +29,11 @@ public class SimpleFilter extends ZuulFilter {
   @Override
   public Object run() {
     RequestContext ctx = RequestContext.getCurrentContext();
+    
+    ctx.addZuulRequestHeader("param", "value");
+
     HttpServletRequest request = ctx.getRequest();
+
 
     log.info(String.format("%s request to %s", request.getMethod(), request.getRequestURL().toString()));
 
