@@ -119,12 +119,12 @@ public class UserRest {
   		  return;
         }
     }*/
-    @RequestMapping(value="/signin")
+    @RequestMapping(method=RequestMethod.POST,value="/signin")
     public void signin(@RequestParam(name="name", required=false, defaultValue="") String name,@RequestParam(name="password", required=false, defaultValue="") String password,HttpServletResponse response) {
         if (!name.equals("") && !password.equals("")) {
           User u = new User(name,password);
       	  uService.signIn(u);
-      	  
+
       	String reqUrl = "http://127.0.0.1:8083/setAuthId/" + u.getId().toString() ;
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getForEntity(reqUrl, String.class);
