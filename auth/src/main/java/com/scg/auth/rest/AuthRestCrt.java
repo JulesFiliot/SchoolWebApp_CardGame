@@ -2,6 +2,8 @@ package com.scg.auth.rest;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 import javax.servlet.http.Cookie;
@@ -23,6 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.scg.auth.service.AuthService;
 //import com.sp.service.UserService;
 
+
 @RestController
 public class AuthRestCrt {
 	//@Autowired
@@ -30,15 +33,21 @@ public class AuthRestCrt {
 	@Autowired
 	AuthService aService;
     
-    @RequestMapping("/login")
-    public void page (@RequestParam(name="username", required=false, defaultValue="") String username,@RequestParam(name="password", required=false, defaultValue="") String password,HttpServletResponse response) {
+    @RequestMapping(method=RequestMethod.POST,value="/login")
+    public void login (@RequestParam(name="name", required=false, defaultValue="") String name,@RequestParam(name="password", required=false, defaultValue="") String password,HttpServletResponse response) {
     	    	
-    	System.out.println(username);
+    	System.out.println(name);
     	System.out.println(password);
     	
+    	// request body parameters
+    	Map<String, String> map = new HashMap<>();
+    	map.put("name", name);
+    	map.put("password", password);
+
     	String reqUrl = "http://127.0.0.1:8080/getUserId";
         RestTemplate restTemplate = new RestTemplate();
-		ResponseEntity<Integer> reqId = restTemplate.getForEntity(reqUrl, Integer.class);
+		ResponseEntity<Integer> reqId = restTemplate.postForEntity(reqUrl, map,Integer.class);
+
 		Integer id = reqId.getBody();
 		
 		System.out.println(id);		

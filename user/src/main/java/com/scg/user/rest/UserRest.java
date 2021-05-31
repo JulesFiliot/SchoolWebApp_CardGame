@@ -42,7 +42,7 @@ public class UserRest {
     }
     
     
-    @RequestMapping(method = RequestMethod.POST, value="/getCurrentUserMoney")
+    @RequestMapping(value="/getCurrentUserMoney")
     public int getUserMoney(@CookieValue(value = "id", defaultValue = "0") String id) {
     	User u = uService.getUser(Integer.parseInt(id));
     	if (u!=null) {
@@ -51,7 +51,7 @@ public class UserRest {
     	else { return 0;}
     }
     
-    @RequestMapping(value="/setCurrentUserMoney")
+    @RequestMapping(value="/setCurrentUserMoney/{money}")
     public boolean setCurrentUserMoney(@CookieValue(value = "id", defaultValue = "0") String id, @PathVariable String money) {
     	User u = uService.getUser(Integer.parseInt(id));
     	if (u!=null) {
@@ -94,7 +94,7 @@ public class UserRest {
         return;
     }
     
-    @RequestMapping(value="/signin")
+    @RequestMapping(method=RequestMethod.POST,value="/signin")
     public void signin(@RequestBody User u) {
   	  
         uService.signIn(u);
