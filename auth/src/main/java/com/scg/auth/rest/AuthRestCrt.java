@@ -40,6 +40,7 @@ public class AuthRestCrt {
         RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<Integer> reqId = restTemplate.getForEntity(reqUrl, Integer.class);
 		Integer id = reqId.getBody();
+		
 		System.out.println(id);		
   	  //int id = uService.checkUser(username, password);
   	  
@@ -53,7 +54,7 @@ public class AuthRestCrt {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-  		  return ;
+  		  return;
   		  }
 		return;
     }
