@@ -6,11 +6,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.scg.user.repository.UserRepository;
+
 @Entity
 public class User implements Serializable {
 	/**
 	 * 
 	 */
+	
 	private static final long serialVersionUID = -7614571566539600298L;
 	@Id
 	@GeneratedValue

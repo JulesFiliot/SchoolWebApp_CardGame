@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+        
+        <link rel="stylesheet" type="text/css" href="/lib/Semantic-UI-CSS-master/semantic.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/custom.css">
+
+        <title>HUB</title>
+        
+        <style>
+			.button {
+			  display: inline-block;
+			  padding: 15px 25px;
+			  font-size: 24px;
+			  cursor: pointer;
+			  text-align: center;
+			  text-decoration: none;
+			  outline: none;
+			  color: #fff;
+			  background-color: #4CAF50;
+			  border: none;
+			  border-radius: 15px;
+			  box-shadow: 0 9px #999;
+			}
+			
+			.button:hover {background-color: #3e8e41}
+			
+			.button:active {
+			  background-color: #3e8e41;
+			  box-shadow: 0 5px #666;
+			  transform: translateY(4px);
+			}
+		</style>
+        
+    </head>
+    <body onload="generate()">
+    
+    	<div>
+            <p id="userName"></p>
+            <p id="currentMoney"></p>
+        </div>
+    
+        <div>
+            <a href = "./buy.html" class="button">Buy</a>
+            <a href = "./sell.html" class="button">Sell</a>
+            <a href = "./play.html" class="button">Play</a>
+        </div>
+        
+        <div>
+        	<br/>
+            <a href = "./logout">Logout</a>
+        </div>
+
+        <script src="./lib/jquery-3.3.1.min.js"></script>
+        <script src="./lib/Semantic-UI-CSS-master/semantic.js"></script>
+        <script src="./js/hub.js"></script>
+    </body>
+</html>
