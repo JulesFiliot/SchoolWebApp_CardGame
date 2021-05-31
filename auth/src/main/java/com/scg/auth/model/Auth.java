@@ -12,6 +12,8 @@ public class Auth {
 	private Integer id;
 	private String name = "currentAuth";
 	
+	public Auth() {
+	}
 	public Auth(Integer id) {
 		super();
 		this.id = id;

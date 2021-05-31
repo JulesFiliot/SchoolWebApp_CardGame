@@ -127,13 +127,13 @@ public class UserRest {
       	  
       	String reqUrl = "http://127.0.0.1:8083/setAuthId/" + u.getId().toString() ;
         RestTemplate restTemplate = new RestTemplate();
-		restTemplate.getForEntity(reqUrl, Object[].class);
+        restTemplate.getForEntity(reqUrl, String.class);
+		//restTemplate.getForEntity(reqUrl, Object[].class);
 		
 	   	  //Cookie cookie = new Cookie("id", u.getId().toString());
       	//Cookie cookie = new Cookie("id", "2");
 	   	 // response.addCookie(cookie);
   		  try {
-
 				response.sendRedirect("http://127.0.0.1:8090/hub.html");
   		  } catch (IOException e) {
   			  	System.out.println("pas fonctionné");

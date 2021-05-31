@@ -73,7 +73,7 @@ public class AuthRestCrt {
   	  	return;
     }
     
-    @RequestMapping("/logout")
+    @RequestMapping(value="/logout")
     public void logout(HttpServletResponse response, HttpServletRequest request) {
 		  //Cookie cookie = new Cookie("id", "0");
 		  /*Cookie c[]=request.getCookies(); 
@@ -140,7 +140,7 @@ public class AuthRestCrt {
     	return aService.getAuthId();
     }
     
-    @RequestMapping("/setAuthId/{id}")
+    @RequestMapping(method=RequestMethod.GET, value="/setAuthId/{id}")
     public void setAuthId(@PathVariable String id) {
     	System.out.println(Integer.parseInt(id));
     	aService.setId(Integer.parseInt(id));
