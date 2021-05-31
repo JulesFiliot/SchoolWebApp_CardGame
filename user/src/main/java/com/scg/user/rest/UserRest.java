@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -42,20 +43,22 @@ public class UserRest {
     }
     
     
-    @RequestMapping(value="/getCurrentUserMoney")
-    public int getUserMoney(@CookieValue(value = "id", defaultValue = "0") String id) {
+    @RequestMapping(value="/getCurrentUserMoney/{id}")
+    public int getUserMoney(@PathVariable String id) {
+    	System.out.println(id);
     	User u = uService.getUser(Integer.parseInt(id));
+    	System.out.println(u);
     	if (u!=null) {
     		return u.getMoney();
     	}
     	else { return 0;}
     }
     
-    @RequestMapping(value="/setCurrentUserMoney/{money}")
-    public boolean setCurrentUserMoney(@CookieValue(value = "id", defaultValue = "0") String id, @PathVariable String money) {
+    @RequestMapping(value="/setCurrentUserMoney/{id}/{money}")
+    public boolean setCurrentUserMoney(@PathVariable String id, @PathVariable String money) {
     	User u = uService.getUser(Integer.parseInt(id));
     	if (u!=null) {
-    		u.setMoney(Integer.parseInt(money));
+    		uService.setMoney(u,Integer.parseInt(money));
     		return true;
     	}
     	else {
@@ -98,11 +101,20 @@ public class UserRest {
     }
     
     @RequestMapping(method=RequestMethod.POST,value="/signin")
-    public void signin(@RequestBody User u) {
-  	  
-        uService.signIn(u);
-        return;
-    }
+    public void signin(@RequestBody User u, HttpServletResponse response) {
+        if (!u.getName().equals("") && !u.getPassword().equals("")) {
+            uService.signIn(u);
+  		  try {
+				response.sendRedirect("index.html");
+  		  } catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+  		  }
+  		  return;
+        }
+
+		  return;
+        }
     
     
     @RequestMapping(method=RequestMethod.GET,value="/username/{name}")

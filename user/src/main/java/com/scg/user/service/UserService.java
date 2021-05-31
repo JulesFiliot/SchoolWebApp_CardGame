@@ -109,4 +109,10 @@ public class UserService {
 	   	 u.setMoney(getUser(Integer.parseInt(id)).getMoney()+50);
 	   	 uRepository.save(u);	
 	   	 }
+
+	public void setMoney(User u, int money) {
+		u.setMoney(money);
+		uRepository.save(u);
+		return;
+	}
 }

@@ -1,6 +1,7 @@
 package com.scg.market.rest;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Optional;
 
@@ -21,25 +22,24 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.scg.market.service.MarketService;
 
-
+@RestController
 public class MarketRest {
-
+	
 	@Autowired
     MarketService mService;
     
-    
-    @RequestMapping("/buyCard/{cId}")
-    public void buyCard (@PathVariable String cId, HttpServletResponse response) {
+    @RequestMapping(method=RequestMethod.GET,value="/buyCard/{uId}/{cId}")
+    public void buyCard (@PathVariable String uId, @PathVariable String cId) {
 		  System.out.println("Je veux acheter la carte d'id "+cId);
-		  mService.buyCard(cId);
-		  try {
-			  response.sendRedirect("../buy.html");
-		  } catch (IOException e) {
-			  // TODO Auto-generated catch block
-			  e.printStackTrace();
-		  }
+		  mService.buyCard(uId,cId);
     }
-/*
+    /*
+    @RequestMapping(method=RequestMethod.GET,value="/allcards")
+    public ArrayList<Card> getAllCards() {
+    	ArrayList<Card> cards = cService.getAllCards();
+    	return cards;
+    }
+*//*
     @RequestMapping("/sellCard/{cid}")
     public void sellCard (@CookieValue(value = "id", defaultValue = "0") String id, @PathVariable String cid,HttpServletResponse response) {
 		  System.out.println("Je veux vendre la carte d'id "+cid);
