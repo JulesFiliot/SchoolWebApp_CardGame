@@ -7,16 +7,82 @@
 
         <title>Play</title>
         
+		<link rel="stylesheet" type="text/css" href="/lib/Semantic-UI-CSS-master/semantic.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/custom.css">
+
     </head>
-	<body>
-		<h1>Work in progress ...</h1>
-		
-        <div>
-        	<br/>
-            <a href = "./hub.html">Hub</a>
+
+    <body>
+        <div class="ui clearing segment">
+            <h3 class="ui right floated header">
+                <i class="user circle outline icon"></i>
+                <a href = "./hub.html">
+                <div class="content">
+                    <span id="userNameId"></span>
+                    <div class="sub header"><span id="userMoneyId"></span>$</div>
+                </div>
+                </a>
+            </h3>
+            
+            <h3 class="ui left floated header">
+                <div class="content">
+                    PLAY
+                    <div class="sub header">Choose a room to play</div>
+                </div>
+            </h3>
         </div>
 
-		<img src="./images/magicarpe.jpg">
-		
+		<a href = "./newRoom.html" class="button">Create Room</a>
+		<br/>
+        <div class="ui grid">
+            <div class="ten wide column">
+               <!--  <h3 class="ui center aligned header"> My Card List</h3> -->
+                 <h3 class="ui aligned header"> Play Room List</h3>
+                <!------------------------------------------------------------------------->
+                <!--    ----------------------------- List ----------------------------- -->
+                <!------------------------------------------------------------------------->
+                <table class="ui fixed selectable single line celled table" id="cardListId">
+                    <thead>
+                        <tr>
+                            <th class="three wide">Room</th>
+                            <th class="three wide">User</th>
+                            <th class="three wide">Pari</th>
+                            <th>Play</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableContent">
+                        <template id="row">
+                        	
+                             <tr>
+                                <td>{{name}}</td>
+                                <td>{{user}}</td>
+                                <td>{{pari}}$</td>
+                                <td>
+                                	<a href = "./hub.html" id="a">
+                                    	<div class="ui vertical animated button" tabindex="0">
+                                        	<div class="hidden content">Play</div>
+                                        	<div class="visible content">
+                                            	<i class="shop icon"></i>
+                                        	</div>
+                                    	</div>
+                                    </a>
+                                </td>
+                            </tr> 
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <script src="../lib/jquery-3.3.1.min.js"></script>
+        <script src="../lib/Semantic-UI-CSS-master/semantic.js"></script>
+        <script src="./js/play.js"></script>
+        
+        <!-- <script>
+            $(function(){
+                $("#card").load("./part/card-full.html"); 
+                
+    });</script>-->
+
     </body>
 </html>

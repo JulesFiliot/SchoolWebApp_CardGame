@@ -135,7 +135,12 @@ public class CardService {
 		int cpt = 0;
 		Iterable<Card> allCards =cRepository.findAll();
 		Iterator<Card> iterator = allCards.iterator();
-		while(iterator.hasNext() && cpt < 5 ) {
+		while(cpt < 5 ) {
+			if (!iterator.hasNext()) {
+				createAllCards();
+				allCards = cRepository.findAll();
+                iterator = allCards.iterator();
+			}
 		    Card it = iterator.next();
 		    if (it.getOwnerId() == 0) {
 			    it.setOwnerId(Integer.parseInt(id));
