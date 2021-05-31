@@ -28,10 +28,10 @@ public class MarketRest {
 	@Autowired
     MarketService mService;
     
-    @RequestMapping(method=RequestMethod.GET,value="/buyCard/{cId}")
-    public void buyCard (@PathVariable String cId) {
+    @RequestMapping(method=RequestMethod.GET,value="/buyCard/{uId}/{cId}")
+    public void buyCard (@PathVariable String uId, @PathVariable String cId) {
 		  System.out.println("Je veux acheter la carte d'id "+cId);
-		  mService.buyCard(cId);
+		  mService.buyCard(uId,cId);
     }
     /*
     @RequestMapping(method=RequestMethod.GET,value="/allcards")

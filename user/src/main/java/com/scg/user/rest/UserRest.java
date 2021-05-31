@@ -53,11 +53,11 @@ public class UserRest {
     	else { return 0;}
     }
     
-    @RequestMapping(value="/setCurrentUserMoney/{money}")
-    public boolean setCurrentUserMoney(@CookieValue(value = "id", defaultValue = "0") String id, @PathVariable String money) {
+    @RequestMapping(value="/setCurrentUserMoney/{id}/{money}")
+    public boolean setCurrentUserMoney(@PathVariable String id, @PathVariable String money) {
     	User u = uService.getUser(Integer.parseInt(id));
     	if (u!=null) {
-    		u.setMoney(Integer.parseInt(money));
+    		uService.setMoney(u,Integer.parseInt(money));
     		return true;
     	}
     	else {
