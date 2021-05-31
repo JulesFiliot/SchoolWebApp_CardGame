@@ -56,7 +56,7 @@ public class PlayRest {
           Play p = new Play(0, name, i);
       	  pService.addPlay(p);
   		  try {
-				response.sendRedirect("http://127.0.0.1:8090/play.html");
+				response.sendRedirect("http://127.0.0.1:8090/waitingRoom.html");
   		  } catch (IOException e) {
 				// TODO Auto-generated catch block
   			  	System.out.println("pas fonctionné");

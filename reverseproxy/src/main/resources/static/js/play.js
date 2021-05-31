@@ -2,8 +2,7 @@
 
 //fetch all cards of connected user
 function fetch_play() {
-    const GET_PLAY_URL="http://127.0.0.1:8084/allPlay"; 
-    alert(GET_PLAY_URL);
+    const GET_PLAY_URL="http://127.0.0.1:8090/play/allPlay"; 
     let context =   {
                         method: 'GET'
                     };
@@ -26,15 +25,15 @@ function playList_callback(reponse) {
 }
 
 function replace_content() {
-		alert("ok");
     let template = document.querySelector("#row");
-    
+    console.log(playList)
     for(const play of playList){
         console.log(play);
         let clone = document.importNode(template.content, true);
 
         newContent= clone.firstElementChild.innerHTML
                     .replace(/{{name}}/g, play.name)
+                    .replace(/{{IdP1}}/g, play.IdP1)
                     .replace(/{{pari}}/g, play.pari);
                     
         clone.firstElementChild.innerHTML= newContent;
@@ -42,8 +41,8 @@ function replace_content() {
         let playContainer= document.querySelector("#tableContent");
         playContainer.appendChild(clone);
 
-    	//document.getElementById("a").href = "./market/buyCard/" + card.id;
-    	//document.getElementById("a").id = "a" + card.id;
+    	document.getElementById("a").href = "./waitingRoom.html";
+    	document.getElementById("a").id = "a" + play.id;
     
     }
 }
@@ -51,7 +50,7 @@ function replace_content() {
 
 //fetch all cards of connected user
 function fetch_user() {
-    const GET_USER_URL="http://127.0.0.1:8080/infoUser"; 
+    const GET_USER_URL="http://127.0.0.1:8090/user/infoUser"; 
     let context =   {
                         method: 'GET'
                     };        
@@ -75,7 +74,6 @@ function user_callback(reponse) {
 
 let playList = [];
 document.addEventListener("DOMContentLoaded", function() {
-	console.log("In JavaScript !");
   fetch_play();
   fetch_user();
 });
