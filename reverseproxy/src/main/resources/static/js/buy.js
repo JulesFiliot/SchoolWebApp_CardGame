@@ -2,7 +2,11 @@
 
 //fetch all cards of connected user
 function fetch_cards() {
+<<<<<<< HEAD
     const GET_CARDS_URL="http://127.0.0.1:8082/marketCards"; 
+=======
+    const GET_CARDS_URL="http://127.0.0.1:8090/card/marketCards"; 
+>>>>>>> f6768e238902f7ae2450dd96ebe2c794e59ae92a
     let context =   {
                         method: 'GET'
                     };
@@ -56,7 +60,7 @@ function replace_content() {
 
 //fetch all cards of connected user
 function fetch_user() {
-    const GET_USER_URL="http://127.0.0.1:8080/infoUser"; 
+    const GET_USER_URL="http://127.0.0.1:8090/user/infoUser"; 
     let context =   {
                         method: 'GET'
                     };        

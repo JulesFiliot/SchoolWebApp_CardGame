@@ -1,6 +1,6 @@
 function generate(){
 
-    const GET_USER_URL="http://127.0.0.1:8080/infoUser"; 
+    const GET_USER_URL="http://127.0.0.1:8090/user/infoUser"; 
     let context =   {
                         method: 'GET'
                     };
