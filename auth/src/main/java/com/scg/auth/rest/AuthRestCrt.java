@@ -128,12 +128,7 @@ public class AuthRestCrt {
     
     
     @RequestMapping("/getCurrentUserId")
-    public String readCookie() {
-    	  	
-    	String reqUrl = "http://127.0.0.1:8080/readUserCookie";
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<String> uId = restTemplate.getForEntity(reqUrl, String.class);
-		
-		return "The id of the current user is " + uId.getBody();
+    public String readCookie(@CookieValue(value = "id", defaultValue = "0") String id) {		
+		return "The id of the current user is " + id;
     }
 }

@@ -2,6 +2,7 @@ package com.scg.play.service;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.client.RestTemplate;
@@ -15,6 +16,12 @@ public class PlayService {
 	@Autowired
 	PlayRepository pRepository;
 	
+	
+	public void newPlay() {
+		Play p = new Play("Roomain", 100);
+		pRepository.save(p);
+	}
+	
 	public void addPlay(Play p) {
 		Play createdPlay = pRepository.save(p);
 		System.out.println(createdPlay);
@@ -23,6 +30,15 @@ public class PlayService {
         RestTemplate restTemplate = new RestTemplate();
 		restTemplate.getForEntity(reqCard, Object[].class);
 		*/	
+	}
+	
+	public Play getPlay(int id) {
+		Optional<Play> pOpt =pRepository.findById(id);
+		if (pOpt.isPresent()) {
+			return pOpt.get();
+		}else {
+			return null;
+		}
 	}
 	
 	public ArrayList<Play> getAllPlay() {

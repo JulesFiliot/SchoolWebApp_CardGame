@@ -11,9 +11,9 @@ public class Play {
 	@GeneratedValue
 	private Integer id;
 	private String name;
-	private Integer pari;
-	private Integer IdP1;
-	private Integer IdP2;
+	private int pari;
+	private int IdP1;
+	private int IdP2;
 	
 	
 	public Play(String name, Integer pari) {
