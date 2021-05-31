@@ -19,7 +19,7 @@ import com.scg.card.model.User;
 public class MarketService {
 
 	public void buyCard(String uId, String cId) {
-		
+		System.out.println("ok dope life");
 		String reqUrl = "http://127.0.0.1:8080/getCurrentUserMoney/" + uId;
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<Integer> bodyIu = restTemplate.getForEntity(reqUrl, Integer.class);
