@@ -49,14 +49,19 @@ public class AuthRestCrt {
     	map.put("name", name);
     	map.put("password", password);
     	
-    	String reqUrl = "http://127.0.0.1:8080/getUserId";
-        RestTemplate restTemplate = new RestTemplate();
-		ResponseEntity<Integer> reqId = restTemplate.postForEntity(reqUrl, map,Integer.class);
-		Integer id = reqId.getBody();
+  //  	String reqUrl = "http://127.0.0.1:8080/getUserId";
+    //    RestTemplate restTemplate = new RestTemplate();
+//		ResponseEntity<Integer> reqId = restTemplate.postForEntity(reqUrl, map,Integer.class);
+//		Integer id = reqId.getBody();
 		
-		System.out.println(id);
-		aService.setId(id);
+//		System.out.println(id);
+//		aService.setId(id);
 		
+		/*try {
+			response.sendRedirect("http://127.0.0.1:8090/hub.html");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
   	 /* if (id != 0) {
   		  Cookie cookie = new Cookie("id", String.valueOf(id));
   		  
@@ -73,7 +78,7 @@ public class AuthRestCrt {
   	  	return;
     }
     
-    @RequestMapping("/logout")
+    @RequestMapping(method=RequestMethod.GET,value="/logout")
     public void logout(HttpServletResponse response, HttpServletRequest request) {
 		  //Cookie cookie = new Cookie("id", "0");
 		  /*Cookie c[]=request.getCookies(); 
@@ -87,6 +92,11 @@ public class AuthRestCrt {
 				e.printStackTrace();
 			}*/
     	aService.setId(0);
+    	try {
+			response.sendRedirect("http://127.0.0.1:8090/index.html");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		return;
     }
     
@@ -140,7 +150,7 @@ public class AuthRestCrt {
     	return aService.getAuthId();
     }
     
-    @RequestMapping("/setAuthId/{id}")
+    @RequestMapping(method=RequestMethod.GET,value="/setAuthId/{id}")
     public void setAuthId(@PathVariable String id) {
     	System.out.println(Integer.parseInt(id));
     	aService.setId(Integer.parseInt(id));
