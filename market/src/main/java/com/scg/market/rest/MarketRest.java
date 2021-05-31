@@ -44,7 +44,7 @@ public class MarketRest {
 			e.printStackTrace();
 		}
     }
-    
+
     @RequestMapping(method=RequestMethod.GET,value="/sellCard/{cId}")
     public void sellCard (@PathVariable String cId,HttpServletResponse response) {
     	String reqUrl = "http://127.0.0.1:8083/getAuthId";
