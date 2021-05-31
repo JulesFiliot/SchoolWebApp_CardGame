@@ -55,6 +55,8 @@ public class AuthRestCrt {
 		ResponseEntity<Integer> reqId = restTemplate.postForEntity(reqUrl, map,Integer.class);
 		Integer id = reqId.getBody();
 		
+		System.out.println(id);
+		
   	  if (id != 0) {
   		  Cookie cookie = new Cookie("id", String.valueOf(id));
 
@@ -65,9 +67,10 @@ public class AuthRestCrt {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+  		  System.out.println(cookie);
   		  return;
   		  }
-		return;
+  	  	return;
     }
     
     @RequestMapping("/logout")
