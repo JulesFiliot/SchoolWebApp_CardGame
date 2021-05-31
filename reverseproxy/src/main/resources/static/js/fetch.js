@@ -1,6 +1,6 @@
 function generate(){
 
-    const GET_CARDS_URL="http://127.0.0.1:8080/allcards"; 
+    const GET_CARDS_URL="http://127.0.0.1:8090/card/allcards"; 
     let context =   {
                         method: 'GET'
                     };
