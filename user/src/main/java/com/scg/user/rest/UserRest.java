@@ -42,9 +42,11 @@ public class UserRest {
     }
     
     
-    @RequestMapping(value="/getCurrentUserMoney")
-    public int getUserMoney(@CookieValue(value = "id", defaultValue = "0") String id) {
+    @RequestMapping(value="/getCurrentUserMoney/{id}")
+    public int getUserMoney(@PathVariable String id) {
+    	System.out.println(id);
     	User u = uService.getUser(Integer.parseInt(id));
+    	System.out.println(u);
     	if (u!=null) {
     		return u.getMoney();
     	}

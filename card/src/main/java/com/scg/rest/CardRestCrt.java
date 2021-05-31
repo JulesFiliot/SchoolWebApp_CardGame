@@ -36,7 +36,7 @@ public class CardRestCrt {
         return c;
     }
     
-    @RequestMapping(method=RequestMethod.GET,value="/priceCard/{cId}")
+    @RequestMapping(method=RequestMethod.GET,value="/sellCard/{cId}")
     public boolean sellCard(@PathVariable String cId) {
         boolean ret = cService.cardSold(cId);
         return ret;
@@ -101,6 +101,6 @@ public class CardRestCrt {
     
     @RequestMapping("/login")
     public void page () {
-  		  Cookie cookie = new Cookie("id", String.valueOf(15));
+  		  Cookie cookie = new Cookie("id", String.valueOf(2));
     }
 }
