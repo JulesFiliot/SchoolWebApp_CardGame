@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
@@ -100,8 +101,8 @@ public class UserRest {
         return;
     }
     
-    @RequestMapping(method=RequestMethod.POST,value="/signin")
-    public void signin(@RequestBody User u, HttpServletResponse response) {
+    /*@RequestMapping(method=RequestMethod.POST,value="/signin")
+    public void signin(User u, HttpServletResponse response) {
         if (!u.getName().equals("") && !u.getPassword().equals("")) {
             uService.signIn(u);
   		  try {
@@ -112,6 +113,23 @@ public class UserRest {
   		  }
   		  return;
         }
+    }*/
+    @RequestMapping(value="/signin")
+    public void signin(@RequestParam(name="name", required=false, defaultValue="") String name,@RequestParam(name="password", required=false, defaultValue="") String password,HttpServletResponse response) {
+        if (!name.equals("") && !password.equals("")) {
+          User u = new User(name,password);
+      	  uService.signIn(u);
+  		  try {
+				response.sendRedirect("index.html");
+  		  } catch (IOException e) {
+				// TODO Auto-generated catch block
+  			  	System.out.println("pas fonctionné");
+				e.printStackTrace();
+  		  }
+  		  return;
+        }
+
+		  return;
     }
 
     
