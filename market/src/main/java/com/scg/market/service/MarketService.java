@@ -47,6 +47,7 @@ public class MarketService {
 		}
 
 	public void sellCard(String uId, String cId) {
+		System.out.println("ok fast life");
 		String reqUrl = "http://127.0.0.1:8081/getOwnerId/" + cId;
         RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<Integer> bodyIco = restTemplate.getForEntity(reqUrl, Integer.class);
@@ -55,7 +56,7 @@ public class MarketService {
 		if (currentOwnerId == Integer.parseInt(uId)) {
 		
 			reqUrl = "http://127.0.0.1:8081/sellCard/" + cId;
-	        restTemplate.getForEntity(reqUrl, Boolean.class);
+	        restTemplate.getForEntity(reqUrl, Object[].class);
 	        
 	        reqUrl = "http://127.0.0.1:8080/getCurrentUserMoney/" + uId;
 			ResponseEntity<Integer> bodyIu = restTemplate.getForEntity(reqUrl, Integer.class);
@@ -68,7 +69,7 @@ public class MarketService {
 	        Integer newUMoney = uMoney + cPrice;
 	        
 	        reqUrl = "http://127.0.0.1:8080/setCurrentUserMoney/" + uId + "/" + newUMoney.toString();
-			restTemplate.getForEntity(reqUrl, Boolean.class);
+			restTemplate.getForEntity(reqUrl, Object[].class);
 		}
 	}
 }

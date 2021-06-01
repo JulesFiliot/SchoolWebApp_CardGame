@@ -39,9 +39,9 @@ public class CardRestCrt {
     }
     
     @RequestMapping(method=RequestMethod.GET,value="/sellCard/{cId}")
-    public boolean sellCard(@PathVariable String cId) {
-        boolean ret = cService.cardSold(cId);
-        return ret;
+    public void sellCard(@PathVariable String cId) {
+        cService.cardSold(cId);
+        return;
     }
     
     @RequestMapping(method=RequestMethod.GET,value="/priceCard/{id}")
