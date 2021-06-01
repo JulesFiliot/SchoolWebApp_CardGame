@@ -53,23 +53,27 @@ public class MarketService {
 		ResponseEntity<Integer> bodyIco = restTemplate.getForEntity(reqUrl, Integer.class);
 		Integer currentOwnerId = bodyIco.getBody();
 		
+		System.out.println(currentOwnerId == Integer.parseInt(uId));
 		if (currentOwnerId == Integer.parseInt(uId)) {
-		
+			System.out.println("je suis dans le if");
 			reqUrl = "http://127.0.0.1:8081/sellCard/" + cId;
 	        restTemplate.getForEntity(reqUrl, Object[].class);
+	        System.out.println("j'ai vendu la carte");
 	        
 	        reqUrl = "http://127.0.0.1:8080/getCurrentUserMoney/" + uId;
 			ResponseEntity<Integer> bodyIu = restTemplate.getForEntity(reqUrl, Integer.class);
 	        Integer uMoney = bodyIu.getBody();
+	        System.out.println(uMoney);
 	        
 	        reqUrl = "http://127.0.0.1:8081/priceCard/" + cId;
 	        ResponseEntity<Integer> bodyI = restTemplate.getForEntity(reqUrl, Integer.class);
 	        Integer cPrice = bodyI.getBody();
+	        System.out.println(cPrice);
 	        
 	        Integer newUMoney = uMoney + cPrice;
 	        
 	        reqUrl = "http://127.0.0.1:8080/setCurrentUserMoney/" + uId + "/" + newUMoney.toString();
-			restTemplate.getForEntity(reqUrl, Object[].class);
+			restTemplate.getForEntity(reqUrl, Boolean.class);
 		}
 	}
 }

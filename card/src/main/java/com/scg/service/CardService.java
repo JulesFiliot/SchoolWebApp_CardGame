@@ -96,14 +96,14 @@ public class CardService {
 		return ListCard;
 	}
 
-	public boolean cardSold(String cid) {
+	public void cardSold(String cid) {
 		Card c = getCard(Integer.parseInt(cid));
 		if(c != null) {
 			c.setOwnerId((Integer) 0);
 			cRepository.save(c);
-			return true;
+			return;
 		}
-		return false;
+		return;
 		
 	}
 	

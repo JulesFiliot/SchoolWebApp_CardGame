@@ -46,7 +46,7 @@ function replace_content() {
         let cardContainer= document.querySelector("#tableContent");
         cardContainer.appendChild(clone);
 
-    	document.getElementById("a").href = "http://127.0.0.1:8090/card/sellCard/" + card.id;
+    	document.getElementById("a").href = "http://127.0.0.1:8090/market/sellCard/" + card.id;
     	document.getElementById("a").id = "a" + card.id;
     
     }
