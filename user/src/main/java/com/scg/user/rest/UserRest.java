@@ -57,14 +57,14 @@ public class UserRest {
     }
     
     @RequestMapping(value="/setCurrentUserMoney/{id}/{money}")
-    public boolean setCurrentUserMoney(@PathVariable String id, @PathVariable String money) {
+    public void setCurrentUserMoney(@PathVariable String id, @PathVariable String money) {
     	User u = uService.getUser(Integer.parseInt(id));
     	if (u!=null) {
     		uService.setMoney(u,Integer.parseInt(money));
-    		return true;
+    		return;
     	}
     	else {
-    		return false;}
+    		return;}
     	}
      
     @RequestMapping(value="/testRP")
